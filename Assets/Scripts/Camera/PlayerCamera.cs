@@ -18,8 +18,8 @@ public class PlayerCamera : MonoBehaviour
     void Start()
     {
         // Centers and hide cursor
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
 
         inputController = GetComponent<InputController>();
     }
