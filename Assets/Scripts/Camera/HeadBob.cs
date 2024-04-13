@@ -9,18 +9,12 @@ public class HeadBob : MonoBehaviour
     public GameObject player;
     [Range(0, 1f)] public float walkAmplitude;
     [Range(0, 30)] public float walkFrequency;
-    [Range(0, 2f)] public float sprintAmplitude;
-    [Range(0, 30)] public float sprintFrequency;
-    [Range(0, 1f)] public float crouchAmplitude;
-    [Range(0, 30)] public float crouchFrequency;
     public float toggleSpeed;
     public float stablizedOffset;
 
     PlayerMovement playerMovement;
     Transform playerCamera, cameraHolder;
     Vector3 startPosition;
-    float amplitude;
-    float frequency;
 
     void Start() {
         cameraHolder = transform;
@@ -29,28 +23,6 @@ public class HeadBob : MonoBehaviour
         startPosition = playerCamera.localPosition;
 
         playerMovement = player.GetComponent<PlayerMovement>();
-    }
-
-    void Update()
-    {
-        PlayerMovement.MovementState movementState = playerMovement.GetMovementState();
-
-        // Change amplitude and frequency depending on movement state
-        switch(movementState) {
-            case PlayerMovement.MovementState.SPRINT:
-                amplitude = sprintAmplitude;
-                frequency = sprintFrequency;
-                break;
-            case PlayerMovement.MovementState.CROUCH: 
-                amplitude = crouchAmplitude;
-                frequency = crouchFrequency;
-                break;
-            case PlayerMovement.MovementState.WALK:
-            default:
-                amplitude = walkAmplitude;
-                frequency = walkFrequency;
-                break;
-        }
     }
 
     private void FixedUpdate() {
@@ -77,8 +49,8 @@ public class HeadBob : MonoBehaviour
         Vector3 pos = Vector3.zero;
 
         // Oscillate using sine and cosine curves
-        pos.y += Mathf.Sin(Time.time * frequency) * amplitude;
-        pos.x += Mathf.Cos(Time.time * frequency / 2) * amplitude / 2;
+        pos.y += Mathf.Sin(Time.time * walkFrequency) * walkAmplitude;
+        pos.x += Mathf.Cos(Time.time * walkFrequency / 2) * walkAmplitude / 2;
 
         return pos;
     }

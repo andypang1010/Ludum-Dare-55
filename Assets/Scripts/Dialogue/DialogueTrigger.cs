@@ -19,7 +19,7 @@ public class DialogueTrigger : MonoBehaviour
         if (isInRange) {
             visualCue.SetActive(true);
             
-            if (InputController.GetInteractDown()) {
+            if (InputController.GetInteract()) {
                 print(inkJSON.text);
             }
         }

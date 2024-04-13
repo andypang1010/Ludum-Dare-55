@@ -8,34 +8,17 @@ public class PlayerMovement : MonoBehaviour
 {
     public enum MovementState {
         WALK,
-        SPRINT,
-        CROUCH,
         AIR
     }
 
     [Header("Movement")]
-    public float sprintSpeed;
     public float walkSpeed;
     public float groundDrag;
     [HideInInspector] public MovementState movementState;
     private float moveSpeed;
 
-    [Header("Jump")]
-    public float jumpForce;
-    public float airMultiplier;
-    public float coyoteTime;
-    public float jumpBuffer;
-    private float coyoteTimeCounter;
-    private float jumpBufferCounter;
-
-    [Header("Crouch")]
-    public float crouchSpeed;
-    public float crouchScale;
-    private float defaultScale;
-
     [Header("Ground Check")]
     public float playerHeight;
-    // public LayerMask groundLayer;
     bool grounded;
 
     [Header("Slope Check")]
@@ -51,8 +34,6 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-
-        defaultScale = transform.localScale.y;
     }
 
     void Update()
@@ -75,44 +56,6 @@ public class PlayerMovement : MonoBehaviour
         Vector2 movement = InputController.GetWalkDirection();
         horizontalInput = movement.x;
         verticalInput = movement.y;
-
-        // Coyote time check
-        if (grounded) {
-            coyoteTimeCounter = coyoteTime;
-        }
-        else {
-            coyoteTimeCounter -= Time.deltaTime;
-        }
-
-        // Jump buffer check
-        if (InputController.GetJumpDown()) {
-            jumpBufferCounter = jumpBuffer;
-        }
-        else {
-            jumpBufferCounter -= Time.deltaTime;
-        }
-        
-        if (grounded) {
-            if (coyoteTimeCounter > 0f && jumpBufferCounter > 0f) {
-                Jump();
-
-                // Reset jump buffer to prevent jumping again
-                jumpBufferCounter = 0f;
-            }
-
-            if (InputController.GetCrouchDown()) {
-                
-                // Shrink to crouch size
-                transform.localScale = new Vector3(transform.localScale.x, crouchScale, transform.localScale.z);
-                
-                // Apply downward force so doesn't float
-                rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
-            }
-        }
-
-        if (InputController.GetCrouchUp() || !grounded) {
-            transform.localScale = new Vector3(transform.localScale.x, defaultScale, transform.localScale.z);
-        }
     }
 
     void HandleMovementState() {
@@ -121,21 +64,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
         else {
-            if (InputController.GetCrouchHold() && grounded) {
-                movementState = MovementState.CROUCH;
-                moveSpeed = crouchSpeed;
-            }
-
-            else if (InputController.GetSprint()) {
-                movementState = MovementState.SPRINT;
-                moveSpeed = sprintSpeed;
-            }
-
-
-            else {
-                movementState = MovementState.WALK;
-                moveSpeed = walkSpeed;
-            }
+            movementState = MovementState.WALK;
+            moveSpeed = walkSpeed;
         }
     }
 
@@ -155,11 +85,6 @@ public class PlayerMovement : MonoBehaviour
         // Move in direction
         else if (grounded) {
             rb.AddForce(10 * moveSpeed * moveDirection, ForceMode.Force);
-        }
-
-        // Move in direction but slower in air
-        else if (!grounded) {
-            rb.AddForce(10 * moveSpeed * moveDirection * airMultiplier, ForceMode.Force);
         }
 
         // Disable gravity while on slope to avoid slipping
@@ -195,15 +120,6 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity = new Vector3(clampedVelocity.x, rb.velocity.y, clampedVelocity.z);
             }
         }
-    }
-
-    void Jump() {
-        exitingSlope = true;
-
-        // Resets y-velocity to have consistent jump height
-        rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
 
     bool OnSlope() {
