@@ -7,8 +7,10 @@ public class DialogueTrigger : MonoBehaviour
 {
     public GameObject visualCue;
     public TextAsset inkJSON;
+    public Transform playerCam;
     bool isInRange;
-    // Start is called before the first frame update
+    RaycastHit hit;
+
     void Start()
     {
         visualCue.SetActive(false);
@@ -17,10 +19,13 @@ public class DialogueTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isInRange && !DialogueManager.Instance.dialogueIsPlaying) {
+        if (isInRange 
+            && Physics.Raycast(new Ray(playerCam.position, playerCam.forward), out hit, 2f, LayerMask.GetMask("Interactable"))
+            && hit.collider.gameObject == transform.parent.gameObject.GetComponentInChildren<Collider>().gameObject) {
+
             visualCue.SetActive(true);
             
-            if (InputController.GetInteract()) {
+            if (InputController.GetInteract() && !DialogueManager.Instance.dialogueIsPlaying ) {
                 DialogueManager.Instance.EnterDialogueMode(inkJSON);
             }
         }

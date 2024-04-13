@@ -5,7 +5,7 @@ using UnityEngine;
 public static class InputController
 {
     static KeyCode interactKey = KeyCode.E;
-    static KeyCode dialogueKey = KeyCode.Mouse0;
+    static KeyCode dialogueKey = KeyCode.Space;
     static KeyCode inspectKey = KeyCode.Q;
 
     public static Vector2 GetWalkDirection() {

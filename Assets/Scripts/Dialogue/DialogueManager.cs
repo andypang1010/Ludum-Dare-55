@@ -10,10 +10,16 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance { get; private set;}
 
-    public float typeSpeed = 0.04f;
+    [Header("Dialogue")]
     public GameObject dialoguePanel;
     public TextMeshProUGUI dialogueText;
+    public float typeSpeed = 0.04f;
     public bool dialogueIsPlaying { get; private set; }
+
+    [Header("Choices")]
+    public GameObject[] choices;
+    public TextMeshProUGUI[] choiceTexts;
+    public int maxNumChoices = 4;
 
     Story currentStory;
 
@@ -28,6 +34,14 @@ public class DialogueManager : MonoBehaviour
     void Start() {
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
+
+        choiceTexts = new TextMeshProUGUI[maxNumChoices];
+
+        int index = 0;
+        foreach (GameObject choice in choices) {
+            choiceTexts[index] = choice.GetComponentInChildren<TextMeshProUGUI>();
+            index++;
+        }
     }
 
     void Update() {
@@ -35,7 +49,7 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        if (InputController.GetContinueDialogue()) {
+        if (InputController.GetContinueDialogue() && currentStory.currentChoices.Count == 0) {
             ContinueStory();
         }
     }
@@ -63,11 +77,28 @@ public class DialogueManager : MonoBehaviour
             string sentence = currentStory.Continue();
             StopAllCoroutines();
             StartCoroutine(TypeSentence(sentence));
+
+            ShowChoices();
         }
 
         else
         {
             ExitDialogueMode();
+        }
+    }
+
+    private void ShowChoices() {
+        List<Choice> choicesList = currentStory.currentChoices;
+
+        int index = 0;
+        foreach (Choice choice in choicesList) {
+            choices[index].gameObject.SetActive(true);
+            choiceTexts[index].text = choice.text;
+            index++;
+        }
+
+        for (int i = index; i < choices.Length; i++) {
+            choices[i].gameObject.SetActive(false);
         }
     }
 
