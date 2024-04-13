@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 9079182451338370231}
   - component: {fileID: 3328080298740300490}
   - component: {fileID: 7862898333756131676}
-  - component: {fileID: 7297886887155485531}
   - component: {fileID: 6062155582985558927}
   m_Layer: 0
   m_Name: PLAYER
@@ -81,24 +80,6 @@ MonoBehaviour:
   sensY: 50
   rotationX: 0
   rotationY: 0
---- !u!114 &7297886887155485531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3030863151037166265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 339d5370c5f3b264ca09e47c9bc5e909, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprintKey: 304
-  crouchKey: 306
-  altCrouchKey: 310
-  jumpKey: 32
-  interactKey: 101
-  inspectKey: 113
 --- !u!114 &6062155582985558927
 MonoBehaviour:
   m_ObjectHideFlags: 0

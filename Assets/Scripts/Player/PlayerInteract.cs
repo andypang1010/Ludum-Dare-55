@@ -13,15 +13,10 @@ public class PlayerInteract : MonoBehaviour
     float holdTime;
     GameObject targetObject;
     RaycastHit hit;
-    InputController inputController;
-
-    void Start() {
-        inputController = GetComponent<InputController>();
-    }
 
     void Update()
     {
-        if (inputController.GetInteractDown()
+        if (InputController.GetInteractDown()
             && Physics.Raycast(cam.transform.position, cam.forward, out hit, maxInteractDistance) 
             && hit.collider.gameObject.layer == LayerMask.NameToLayer("Interactable")) {
                 holdTime = 0;
@@ -29,11 +24,11 @@ public class PlayerInteract : MonoBehaviour
                 targetObject = hit.collider.gameObject;
             }
 
-        if (inputController.GetInteractUp()) {
+        if (InputController.GetInteractUp()) {
             holdTime = 0;
         }
    
-        if (inputController.GetInteractHold()) {
+        if (InputController.GetInteractHold()) {
             if (Physics.Raycast(cam.transform.position, cam.forward, out hit, maxInteractDistance)
             && hit.collider.gameObject == targetObject) {
                 holdTime += Time.deltaTime;

@@ -46,12 +46,10 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb;
     Vector3 moveDirection;
     float horizontalInput, verticalInput;
-    InputController inputController;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        inputController = GetComponent<InputController>();
         rb.freezeRotation = true;
 
         defaultScale = transform.localScale.y;
@@ -74,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void GetInput() {
-        Vector2 movement = inputController.GetWalkDirection();
+        Vector2 movement = InputController.GetWalkDirection();
         horizontalInput = movement.x;
         verticalInput = movement.y;
 
@@ -87,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Jump buffer check
-        if (inputController.GetJumpDown()) {
+        if (InputController.GetJumpDown()) {
             jumpBufferCounter = jumpBuffer;
         }
         else {
@@ -102,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
                 jumpBufferCounter = 0f;
             }
 
-            if (inputController.GetCrouchDown()) {
+            if (InputController.GetCrouchDown()) {
                 
                 // Shrink to crouch size
                 transform.localScale = new Vector3(transform.localScale.x, crouchScale, transform.localScale.z);
@@ -112,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (inputController.GetCrouchUp() || !grounded) {
+        if (InputController.GetCrouchUp() || !grounded) {
             transform.localScale = new Vector3(transform.localScale.x, defaultScale, transform.localScale.z);
         }
     }
@@ -123,12 +121,12 @@ public class PlayerMovement : MonoBehaviour
         }
 
         else {
-            if (inputController.GetCrouchHold() && grounded) {
+            if (InputController.GetCrouchHold() && grounded) {
                 movementState = MovementState.CROUCH;
                 moveSpeed = crouchSpeed;
             }
 
-            else if (inputController.GetSprint()) {
+            else if (InputController.GetSprint()) {
                 movementState = MovementState.SPRINT;
                 moveSpeed = sprintSpeed;
             }
