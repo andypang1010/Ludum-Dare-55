@@ -15,6 +15,7 @@ public class BookUIManager : MonoBehaviour
     public GameObject sentenceParent;
 
     private bool showingBook;
+    private NPCObject currNpc;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +47,7 @@ public class BookUIManager : MonoBehaviour
     public void ShowSentenceGuesser(NPCObject npcObject)
     {
         ShowBook();
+        currNpc = npcObject;
         npcView.sprite = npcObject.bookView;
         
         for(int i = 0; i < sentenceParent.transform.childCount; i++)
@@ -53,12 +55,12 @@ public class BookUIManager : MonoBehaviour
             Destroy(sentenceParent.transform.GetChild(i).gameObject);
         }
 
-        foreach (string sentence in NPCManager.Instance.GetSentences())
+        foreach (NPCObject npcObj in NPCManager.Instance.unlockedNPCs)
         {
             GameObject sentenceObj = Instantiate(sentencePrefab);
-            TMP_Text textMeshPro = sentenceObj.GetComponent<TMP_Text>();
-            textMeshPro.text = sentence;
-            sentenceObj.transform.SetParent(sentenceParent.transform, true);
+            Sentence sentenceComponent = sentenceObj.GetComponent<Sentence>();
+            sentenceComponent.Setup(npcObj, npcObj.sentence);
+            sentenceObj.transform.SetParent(sentenceParent.transform, false);
         }
     }
 }
