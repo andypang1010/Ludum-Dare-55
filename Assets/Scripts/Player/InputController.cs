@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputController : MonoBehaviour
+public static class InputController
 {
     static KeyCode interactKey = KeyCode.E;
+    static KeyCode dialogueKey = KeyCode.Mouse0;
     static KeyCode inspectKey = KeyCode.Q;
 
     public static Vector2 GetWalkDirection() {
@@ -17,6 +18,10 @@ public class InputController : MonoBehaviour
 
     public static bool GetInteract() {
         return Input.GetKeyDown(interactKey);
+    }
+
+    public static bool GetContinueDialogue() {
+        return Input.GetKeyDown(dialogueKey);
     }
 
     public static bool GetInspect() {
