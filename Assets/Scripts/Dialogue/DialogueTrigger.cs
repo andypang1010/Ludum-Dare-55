@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
@@ -16,16 +17,12 @@ public class DialogueTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isInRange) {
+        if (isInRange && !DialogueManager.Instance.dialogueIsPlaying) {
             visualCue.SetActive(true);
             
             if (InputController.GetInteract()) {
-                print(inkJSON.text);
+                DialogueManager.Instance.EnterDialogueMode(inkJSON);
             }
-        }
-
-        else {
-            visualCue.SetActive(false);
         }
     }
 

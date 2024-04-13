@@ -9,12 +9,14 @@ public class HeadBob : MonoBehaviour
     public GameObject player;
     [Range(0, 1f)] public float walkAmplitude;
     [Range(0, 30)] public float walkFrequency;
-    public float toggleSpeed;
+    [Range(0, 1f)] public float idleAmplitude;
+    [Range(0, 30)] public float idleFrequency;
     public float stablizedOffset;
 
     PlayerMovement playerMovement;
     Transform playerCamera, cameraHolder;
     Vector3 startPosition;
+    float amplitude, frequency;
 
     void Start() {
         cameraHolder = transform;
@@ -33,12 +35,6 @@ public class HeadBob : MonoBehaviour
     }
 
     void PlayMotion() {
-        float moveSpeed = new Vector2(
-            Math.Abs(playerMovement.GetMoveVelocity().x), 
-            Math.Abs(playerMovement.GetMoveVelocity().z)).magnitude;
-
-        // Head bob only if reaches toggle speed and is grounded
-        if (moveSpeed < toggleSpeed) return;
         if (!playerMovement.isGrounded()) return;
 
         // Offset camera position by head bob
@@ -49,8 +45,19 @@ public class HeadBob : MonoBehaviour
         Vector3 pos = Vector3.zero;
 
         // Oscillate using sine and cosine curves
-        pos.y += Mathf.Sin(Time.time * walkFrequency) * walkAmplitude;
-        pos.x += Mathf.Cos(Time.time * walkFrequency / 2) * walkAmplitude / 2;
+
+        if (playerMovement.GetMoveVelocity().magnitude <= 0.3f) {
+            amplitude = idleAmplitude;
+            frequency = idleFrequency;
+        }
+        
+        else {
+            amplitude = walkAmplitude;
+            frequency = walkFrequency;
+        }
+
+        pos.y += Mathf.Sin(Time.time * frequency) * amplitude;
+        pos.x += Mathf.Cos(Time.time * frequency / 2) * amplitude / 2;
 
         return pos;
     }
