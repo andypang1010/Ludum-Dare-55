@@ -36,7 +36,7 @@ public class PlayerCamera : MonoBehaviour
             currentSensY = sensY;
         }
 
-        Vector2 lookDirection = inputController.GetLookDirection();
+        Vector2 lookDirection = InputController.GetLookDirection();
 
         // Get mouse input with sensitivity
         float mouseX = lookDirection.x * Time.fixedDeltaTime * currentSensX;
