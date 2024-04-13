@@ -5,6 +5,10 @@ using UnityEngine;
 public class NPCObject : MonoBehaviour
 {
     public string sentence;
+    public Sprite bookView;
+    public bool isRelevant;
+    public bool guessed;
+    public NPCObject nextUnlockedNPC;
 
     // Start is called before the first frame update
     void Start()
@@ -16,5 +20,14 @@ public class NPCObject : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player") && InputController.GetInteract())
+        {
+            Debug.Log("2");
+            BookUIManager.Instance.ShowSentenceGuesser(this);
+        }
     }
 }
