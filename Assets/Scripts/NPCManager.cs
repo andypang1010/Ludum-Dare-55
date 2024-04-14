@@ -6,6 +6,7 @@ public class NPCManager : MonoBehaviour
 {
     public static NPCManager Instance;
 
+    public int minCorrectCount = 3;
     public List<NPCObject> unlockedNPCs = new List<NPCObject>();
     private List<NPCObject> guessedNPCs = new List<NPCObject>();
 
@@ -23,14 +24,15 @@ public class NPCManager : MonoBehaviour
 
     public void GuessSentence(NPCObject npc, string sentence)
     {
-        if(npc.sentence == sentence)
+        // npc.guesses.Add(sentence);
+        if(npc.sentences.Contains(sentence))
         {
             guessedNPCs.Add(npc);
             npc.guessed = true;
-            if(guessedNPCs.Count >= 3)
+            if(guessedNPCs.Count >= minCorrectCount)
             {
                 UnlockNewNPCs();
-                BookUIManager.Instance.HideBook();
+                // BookUIManager.Instance.HideBook();
             }
         }
     }
@@ -45,11 +47,13 @@ public class NPCManager : MonoBehaviour
 
     public List<string> GetSentences()
     {
-        List<string> sentences = new List<string>();
+        List<string> sentencesList = new List<string>();
         foreach(NPCObject npc in unlockedNPCs)
         {
-            sentences.Add(npc.sentence);
+            foreach(string sentence in npc.sentences) {
+                sentencesList.Add(sentence);
+            }
         }
-        return sentences;
+        return sentencesList;
     }
 }

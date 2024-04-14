@@ -8,6 +8,7 @@ public class NPCTrigger : MonoBehaviour
     public GameObject visualCue;
     public TextAsset inkJSON;
     public Transform playerCam;
+    public float maxInteractDistance;
     bool isInRange;
     RaycastHit hit;
 
@@ -20,13 +21,13 @@ public class NPCTrigger : MonoBehaviour
     void Update()
     {
         if (isInRange 
-            && Physics.Raycast(new Ray(playerCam.position, playerCam.forward), out hit, 2f, LayerMask.GetMask("Interactable"))
-            && hit.collider.gameObject == transform.parent.gameObject.GetComponentInChildren<Collider>().gameObject) {
+            && Physics.Raycast(new Ray(playerCam.position, playerCam.forward), out hit, Mathf.Infinity, LayerMask.GetMask("Interactable"))
+            && hit.transform.gameObject == transform.parent.gameObject.GetComponentInChildren<Collider>().gameObject) {
 
             visualCue.SetActive(true);
             
             if (InputController.GetInteract() && !DialogueManager.Instance.dialogueIsPlaying ) {
-                NPCObject npcObject = transform.parent.gameObject.GetComponentInChildren<NPCObject>();
+                NPCObject npcObject = GetComponentInParent<NPCObject>();
 
                 if (npcObject.guessed)
                 {

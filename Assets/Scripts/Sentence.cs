@@ -11,7 +11,7 @@ public class Sentence : MonoBehaviour
     public void Setup(NPCObject npcObj, string sentence)
     {
         TMP_Text textMeshPro = GetComponentInChildren<TMP_Text>();
-        textMeshPro.text = sentence;
+        textMeshPro.text = "\"" + sentence + "\"";
         this.sentence = sentence;
         npcObject = npcObj;
     }
@@ -19,8 +19,5 @@ public class Sentence : MonoBehaviour
     public void Guess()
     {
         NPCManager.Instance.GuessSentence(npcObject, sentence);
-        
-        // For debug only, delete later!
-        BookUIManager.Instance.HideBook();
     }
 }

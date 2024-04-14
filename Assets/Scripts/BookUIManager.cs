@@ -48,7 +48,6 @@ public class BookUIManager : MonoBehaviour
 
     public void ShowSentenceGuesser(NPCObject npcObject)
     {
-        ShowBook();
         currNpc = npcObject;
         npcView.sprite = npcObject.bookView;
         
@@ -59,10 +58,12 @@ public class BookUIManager : MonoBehaviour
 
         foreach (NPCObject npcObj in NPCManager.Instance.unlockedNPCs)
         {
-            GameObject sentenceObj = Instantiate(sentencePrefab);
-            Sentence sentenceComponent = sentenceObj.GetComponent<Sentence>();
-            sentenceComponent.Setup(npcObj, npcObj.sentence);
-            sentenceObj.transform.SetParent(sentenceParent.transform, false);
+            foreach (string sentence in npcObj.sentences) {
+                GameObject sentenceObj = Instantiate(sentencePrefab);
+                Sentence sentenceComponent = sentenceObj.GetComponent<Sentence>();
+                sentenceComponent.Setup(npcObj, sentence);
+                sentenceObj.transform.SetParent(sentenceParent.transform, false);
+            }
         }
     }
 }
