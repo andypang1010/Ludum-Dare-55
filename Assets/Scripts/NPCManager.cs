@@ -12,6 +12,7 @@ public class NPCManager : MonoBehaviour
     public List<NPCObject> unlockedNPCs;
     // public HashSet<NPCObject> confirmedNPCs;
     public HashSet<NPCObject> correctGuessedNPCs;
+
     void Awake() {
         if (Instance != null) {
             Debug.LogWarning("More than one NPCManager in scene");
@@ -25,24 +26,26 @@ public class NPCManager : MonoBehaviour
         correctGuessedNPCs = new HashSet<NPCObject>();
     }
 
-    public void GuessSentence(NPCObject npc, string sentence)
+    public void GuessSentence(string sentence)
     {
+        NPCObject openedNpc = BookUIManager.Instance.currNpc;
+
         // Select/Deselect
-        if (sentence == npc.currentGuess) {
-            npc.currentGuess = "";
+        if (sentence == openedNpc.currentGuess) {
+            openedNpc.currentGuess = "";
         }
         else {
-            npc.currentGuess = sentence;
+            openedNpc.currentGuess = sentence;
         }
 
-        BookUIManager.Instance.UpdateGuessText(npc.currentGuess);
+        BookUIManager.Instance.UpdateGuessText(openedNpc.currentGuess);
 
         // Check
-        if (npc.GuessCorrect()) {
-            correctGuessedNPCs.Add(npc);
+        if (openedNpc.GuessCorrect()) {
+            correctGuessedNPCs.Add(openedNpc);
         }
         else {
-            correctGuessedNPCs.Remove(npc);
+            correctGuessedNPCs.Remove(openedNpc);
         }
         
         CheckNewUnlock();
@@ -67,8 +70,11 @@ public class NPCManager : MonoBehaviour
         List<NPCObject> newUnlocked = new List<NPCObject>();
         foreach(NPCObject npc in correctGuessedNPCs)
         {
-            unlockedNPCs.Add(npc.nextUnlockedNPC);
-            newUnlocked.Add(npc);
+            if (npc.nextUnlockedNPC != null)
+            {
+                unlockedNPCs.Add(npc.nextUnlockedNPC);
+                newUnlocked.Add(npc);
+            }
         }
         BookUIManager.Instance.UnlockNewNPCs(newUnlocked);
     }

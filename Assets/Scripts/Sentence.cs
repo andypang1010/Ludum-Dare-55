@@ -14,23 +14,21 @@ public class Sentence : MonoBehaviour
     public void Setup(NPCObject npcObj, string sentence, bool enabled = true)
     {
         buttonComponent = GetComponent<Button>();
+        tmpTextComponent = GetComponentInChildren<TMP_Text>();
 
         // if the current opened npc is confirmed, disable the button
-        if(!enabled)
-        {
-            buttonComponent.enabled = enabled;
-        }
-
-        // if the npc that the sentence belongs to is confirmed, strikethrough the text and disable the button
-        UpdateSentence();
+        buttonComponent.enabled = enabled;
 
         this.sentence = sentence;
         npcObject = npcObj;
+
+        // if the npc that the sentence belongs to is confirmed, strikethrough the text and disable the button
+        UpdateSentence();
     }
 
     public void Guess()
     {
-        NPCManager.Instance.GuessSentence(npcObject, sentence);
+        NPCManager.Instance.GuessSentence(sentence);
     }
 
     public void UpdateSentence()
@@ -38,12 +36,14 @@ public class Sentence : MonoBehaviour
         // If sentence is already confirmed, strike through the sentence in bookView
         if(npcObject.isConfirmed)
         {
-            tmpTextComponent.text = "<s>\"" + tmpTextComponent.text + "\"</s>";
+            Debug.Log("sentence update is confirmed");
+            tmpTextComponent.text = "<s>\"" + npcObject.sentence + "\"</s>";
             buttonComponent.enabled = false;
         }
 
         else {
-            tmpTextComponent.text = "\"" + tmpTextComponent.text + "\"";
+            Debug.Log("sentence update is not confirmed");
+            tmpTextComponent.text = "\"" + npcObject.sentence + "\"";
         }
     }
 }

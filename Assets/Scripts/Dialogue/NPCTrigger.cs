@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -19,9 +20,17 @@ public class NPCTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Physics.SphereCast(new Ray(playerCam.position, playerCam.forward), 0.01f, out hit, Mathf.Infinity, LayerMask.GetMask("Interactable"));
+        //if (hit.collider != null)
+        //{
+        //    Debug.Log(hit.collider.gameObject.name);
+        //}
+
         if (isInRange 
-            && Physics.SphereCast(new Ray(playerCam.position, playerCam.forward), 1f, out hit, Mathf.Infinity, LayerMask.GetMask("Interactable"))
-            && hit.transform.gameObject == transform.parent.gameObject.GetComponentInChildren<Collider>().gameObject) {
+            && Physics.SphereCast(new Ray(playerCam.position, playerCam.forward), 0.01f, out hit, Mathf.Infinity, LayerMask.GetMask("Interactable"))
+            && transform.parent.gameObject.GetComponentsInChildren<Collider>().Contains(hit.transform.gameObject.GetComponent<Collider>())) {
+
+            //hit.transform.gameObject == transform.parent.gameObject.GetComponentInChildren<Collider>().gameObject
 
             visualCue.SetActive(true);
             
@@ -29,7 +38,6 @@ public class NPCTrigger : MonoBehaviour
                 if (!BookUIManager.Instance.showingBook) {
                     NPCObject npcObject = GetComponentInParent<NPCObject>();
 
-                    BookUIManager.Instance.ShowBook();
                     BookUIManager.Instance.ShowSentenceGuesser(npcObject);
                 }
 

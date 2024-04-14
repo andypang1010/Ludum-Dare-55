@@ -15,8 +15,8 @@ public class BookUIManager : MonoBehaviour
     public Image npcView;
 
     public bool showingBook;
-    private NPCObject currNpc;
-    private List<Sentence> currSentences;
+    public NPCObject currNpc;
+    private List<Sentence> currSentences = new List<Sentence>();
 
     void Awake() {
         if (Instance != null) {
@@ -50,8 +50,11 @@ public class BookUIManager : MonoBehaviour
 
     public void ShowSentenceGuesser(NPCObject npc)
     {
+        ShowBook();
+
         npcView.sprite = npc.bookView;
         UpdateGuessText(npc.currentGuess);
+        currNpc = npc;
         
         for(int i = 0; i < sentenceParent.transform.childCount; i++)
         {
@@ -65,7 +68,7 @@ public class BookUIManager : MonoBehaviour
                 Sentence sentenceComponent = sentenceObj.GetComponent<Sentence>();
                 currSentences.Add(sentenceComponent);
 
-                sentenceComponent.Setup(npcObj, npcObj.sentence, npcObj.isConfirmed);
+                sentenceComponent.Setup(npcObj, npcObj.sentence, !npcObj.isConfirmed);
                 
                 sentenceObj.transform.SetParent(sentenceParent.transform, false);
             // }
