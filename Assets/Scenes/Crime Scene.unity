@@ -1358,7 +1358,7 @@ MonoBehaviour:
   walkAmplitude: 0.5
   walkFrequency: 15
   idleAmplitude: 0.1
-  idleFrequency: 2
+  idleFrequency: 1
   stablizedOffset: 30
 --- !u!114 &641957614
 MonoBehaviour:
@@ -2592,7 +2592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.36078432}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5882353}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
