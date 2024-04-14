@@ -2090,6 +2090,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 65383493725406688, guid: 90a8446532ff1024e881827d46c2d57e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 400664347769209480, guid: 90a8446532ff1024e881827d46c2d57e,
         type: 3}
       propertyPath: m_Layer
@@ -2125,12 +2130,27 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1446342757131373042, guid: 90a8446532ff1024e881827d46c2d57e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1622784166444013722, guid: 90a8446532ff1024e881827d46c2d57e,
         type: 3}
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1675119066545770949, guid: 90a8446532ff1024e881827d46c2d57e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697105929793871747, guid: 90a8446532ff1024e881827d46c2d57e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1893273636396370410, guid: 90a8446532ff1024e881827d46c2d57e,
         type: 3}
       propertyPath: m_Layer
       value: 6
@@ -2161,6 +2181,11 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2325738051648024808, guid: 90a8446532ff1024e881827d46c2d57e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2537529137492103826, guid: 90a8446532ff1024e881827d46c2d57e,
         type: 3}
       propertyPath: m_Layer
       value: 6
@@ -2255,6 +2280,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3390635200137404682, guid: 90a8446532ff1024e881827d46c2d57e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3503407463205002682, guid: 90a8446532ff1024e881827d46c2d57e,
         type: 3}
       propertyPath: m_Layer
@@ -2335,6 +2365,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5831221910658026861, guid: 90a8446532ff1024e881827d46c2d57e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5971112221282327706, guid: 90a8446532ff1024e881827d46c2d57e,
         type: 3}
       propertyPath: m_Layer
@@ -2385,7 +2420,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 7496647999570763279, guid: 90a8446532ff1024e881827d46c2d57e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7833491300733463166, guid: 90a8446532ff1024e881827d46c2d57e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857389630328227561, guid: 90a8446532ff1024e881827d46c2d57e,
         type: 3}
       propertyPath: m_Layer
       value: 6
@@ -2401,6 +2446,11 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8611934054643037099, guid: 90a8446532ff1024e881827d46c2d57e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8680928130114883080, guid: 90a8446532ff1024e881827d46c2d57e,
         type: 3}
       propertyPath: m_Layer
       value: 6
@@ -4657,6 +4707,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Interact Trigger
       objectReference: {fileID: 0}
+    - target: {fileID: 8055229165321991163, guid: 2d91956c052b6fd459d90ebfaa22dcb1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4774,6 +4829,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Interact Trigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 8055229165321991163, guid: 2d91956c052b6fd459d90ebfaa22dcb1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6970,6 +7030,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1989951996}
     m_Modifications:
+    - target: {fileID: 4236676199982755506, guid: 2d91956c052b6fd459d90ebfaa22dcb1,
+        type: 3}
+      propertyPath: playerCam
+      value: 
+      objectReference: {fileID: 330585546}
     - target: {fileID: 6806287183227775696, guid: 2d91956c052b6fd459d90ebfaa22dcb1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7020,15 +7085,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6942404048167665611, guid: 2d91956c052b6fd459d90ebfaa22dcb1,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.03
-      objectReference: {fileID: 0}
     - target: {fileID: 8055229165321991163, guid: 2d91956c052b6fd459d90ebfaa22dcb1,
         type: 3}
       propertyPath: m_Name
       value: Interact Trigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 8055229165321991163, guid: 2d91956c052b6fd459d90ebfaa22dcb1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8829,7 +8894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 972551a8fd8d551408c8df50fced02ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minCorrectCount: 5
+  minCorrectCount: 3
   unlockedNPCs:
   - {fileID: 1591482282}
   - {fileID: 2147342359}
@@ -10267,6 +10332,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Interact Trigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 8055229165321991163, guid: 2d91956c052b6fd459d90ebfaa22dcb1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11792,6 +11862,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Interact Trigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 8055229165321991163, guid: 2d91956c052b6fd459d90ebfaa22dcb1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

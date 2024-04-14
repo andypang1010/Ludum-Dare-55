@@ -60,6 +60,7 @@ public class BookUIManager : MonoBehaviour
         {
             Destroy(sentenceParent.transform.GetChild(i).gameObject);
         }
+        currSentences.Clear();
 
         foreach (NPCObject npcObj in NPCManager.Instance.unlockedNPCs)
         {
@@ -80,12 +81,17 @@ public class BookUIManager : MonoBehaviour
         currentGuessText.text = guess.Length > 0 ? "\"" + guess + "\"" : "";
     }
 
-    public IEnumerator UnlockNewNPCs(List<NPCObject> newUnlocked)
+    public void UnlockNewNPCs(List<NPCObject> newUnlocked)
+    {
+        StartCoroutine(UnlockAnimation(newUnlocked));
+    }
+
+    private IEnumerator UnlockAnimation(List<NPCObject> newUnlocked)
     {
         foreach(Sentence sentence in currSentences)
         {
             sentence.UpdateSentence();
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 }

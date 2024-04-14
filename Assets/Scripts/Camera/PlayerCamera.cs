@@ -57,4 +57,12 @@ public class PlayerCamera : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, rotationY, 0);
         }
     }
+
+    //public IEnumerator FollowAnimation(List<GameObject> gameObjects)
+    //{
+    //    foreach(GameObject gameObject in gameObjects)
+    //    {
+
+    //    }
+    //}
 }

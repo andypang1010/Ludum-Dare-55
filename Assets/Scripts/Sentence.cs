@@ -36,13 +36,12 @@ public class Sentence : MonoBehaviour
         // If sentence is already confirmed, strike through the sentence in bookView
         if(npcObject.isConfirmed)
         {
-            Debug.Log("sentence update is confirmed");
             tmpTextComponent.text = "<s>\"" + npcObject.sentence + "\"</s>";
+            tmpTextComponent.color = Color.green;
             buttonComponent.enabled = false;
         }
 
         else {
-            Debug.Log("sentence update is not confirmed");
             tmpTextComponent.text = "\"" + npcObject.sentence + "\"";
         }
     }
