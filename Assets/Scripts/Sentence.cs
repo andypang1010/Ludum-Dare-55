@@ -31,5 +31,8 @@ public class Sentence : MonoBehaviour
     public void Guess()
     {
         NPCManager.Instance.GuessSentence(npcObject, sentence);
+        
+        // For debug only, delete later!
+        BookUIManager.Instance.HideBook();
     }
 }

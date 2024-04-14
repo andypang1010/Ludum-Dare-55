@@ -9,39 +9,41 @@ public class BookUIManager : MonoBehaviour
     public static BookUIManager Instance;
 
     public GameObject sentencePrefab;
-
-    public GameObject canvas;
+    public GameObject book;
     public Image npcView;
     public GameObject sentenceParent;
 
-    private bool showingBook;
+    public bool showingBook;
     private NPCObject currNpc;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    void Awake() {
+        if (Instance != null) {
+            Debug.LogWarning("More than one BookUIManager in scene");
+        }
+
         Instance = this;
+    }
+
+    void Start() {
+        HideBook();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(InputController.GetInteract() && showingBook)
-        {
-            //HideBook();
-        }
+        
     }
 
-    private void ShowBook()
+    public void ShowBook()
     {
         showingBook = true;
-        canvas.SetActive(true);
+        book.SetActive(true);
     }
 
-    private void HideBook()
+    public void HideBook()
     {
         showingBook = false;
-        canvas.SetActive(false);
+        book.SetActive(false);
     }
 
     public void ShowSentenceGuesser(NPCObject npcObject)

@@ -22,8 +22,18 @@ public class PlayerCamera : MonoBehaviour
 
     void Update()
     {
+        if (DialogueManager.Instance.dialogueIsPlaying || BookUIManager.Instance.showingBook) {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
 
-        if (!DialogueManager.Instance.dialogueIsPlaying) {
+            // Update camera rotation
+            cam.rotation = Quaternion.Euler(rotationX, rotationY, 0);
+            
+            // Update player rotation
+            transform.rotation = Quaternion.Euler(0, rotationY, 0);
+        }
+
+        else {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
@@ -41,17 +51,6 @@ public class PlayerCamera : MonoBehaviour
             rotationX = Math.Clamp(rotationX, -80f, 80f);
 
             // Update camera rotation
-            cam.rotation = Quaternion.Euler(rotationX, rotationY, 0);
-            
-            // Update player rotation
-            transform.rotation = Quaternion.Euler(0, rotationY, 0);
-        }
-
-        else {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-
-                        // Update camera rotation
             cam.rotation = Quaternion.Euler(rotationX, rotationY, 0);
             
             // Update player rotation

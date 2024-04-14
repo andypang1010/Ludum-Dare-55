@@ -26,9 +26,11 @@ public class NPCManager : MonoBehaviour
         if(npc.sentence == sentence)
         {
             guessedNPCs.Add(npc);
+            npc.guessed = true;
             if(guessedNPCs.Count >= 3)
             {
                 UnlockNewNPCs();
+                BookUIManager.Instance.HideBook();
             }
         }
     }

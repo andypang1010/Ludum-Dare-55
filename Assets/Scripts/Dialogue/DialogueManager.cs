@@ -18,8 +18,7 @@ public class DialogueManager : MonoBehaviour
 
     [Header("Choices")]
     public GameObject[] choices;
-    public TextMeshProUGUI[] choiceTexts;
-    public int maxNumChoices = 4;
+    TextMeshProUGUI[] choiceTexts;
 
     Story currentStory;
 
@@ -35,7 +34,7 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
 
-        choiceTexts = new TextMeshProUGUI[maxNumChoices];
+        choiceTexts = new TextMeshProUGUI[choices.Length];
 
         int index = 0;
         foreach (GameObject choice in choices) {
@@ -100,6 +99,11 @@ public class DialogueManager : MonoBehaviour
         for (int i = index; i < choices.Length; i++) {
             choices[i].gameObject.SetActive(false);
         }
+    }
+
+    public void MakeChoice(int choiceIndex) {
+        currentStory.ChooseChoiceIndex(choiceIndex);
+        ContinueStory();
     }
 
     IEnumerator TypeSentence(string sentence) {

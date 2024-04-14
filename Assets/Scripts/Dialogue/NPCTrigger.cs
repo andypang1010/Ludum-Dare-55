@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class DialogueTrigger : MonoBehaviour
+public class NPCTrigger : MonoBehaviour
 {
     public GameObject visualCue;
     public TextAsset inkJSON;
@@ -26,7 +26,20 @@ public class DialogueTrigger : MonoBehaviour
             visualCue.SetActive(true);
             
             if (InputController.GetInteract() && !DialogueManager.Instance.dialogueIsPlaying ) {
-                DialogueManager.Instance.EnterDialogueMode(inkJSON);
+                NPCObject npcObject = transform.parent.gameObject.GetComponentInChildren<NPCObject>();
+
+                if (npcObject.guessed)
+                {
+                    print("Guessed");
+                    BookUIManager.Instance.HideBook();
+                    DialogueManager.Instance.EnterDialogueMode(inkJSON);
+                }
+
+                else
+                {
+                    BookUIManager.Instance.ShowBook();
+                    BookUIManager.Instance.ShowSentenceGuesser(npcObject);
+                }
             }
         }
     }
