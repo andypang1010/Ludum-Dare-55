@@ -2,16 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Sentence : MonoBehaviour
 {
     private NPCObject npcObject;
     private string sentence;
+    private Button buttonComponent;
+    private TMP_Text tmpTextComponent;
 
-    public void Setup(NPCObject npcObj, string sentence)
+    public void Setup(NPCObject npcObj, string sentence, bool enabled = true)
     {
-        TMP_Text textMeshPro = GetComponentInChildren<TMP_Text>();
-        textMeshPro.text = "\"" + sentence + "\"";
+        buttonComponent = GetComponent<Button>();
+
+        // if the current opened npc is confirmed, disable the button
+        if(!enabled)
+        {
+            buttonComponent.enabled = enabled;
+        }
+
+        // if the npc that the sentence belongs to is confirmed, strikethrough the text and disable the button
+        UpdateSentence();
+
         this.sentence = sentence;
         npcObject = npcObj;
     }
@@ -19,5 +31,19 @@ public class Sentence : MonoBehaviour
     public void Guess()
     {
         NPCManager.Instance.GuessSentence(npcObject, sentence);
+    }
+
+    public void UpdateSentence()
+    {
+        // If sentence is already confirmed, strike through the sentence in bookView
+        if(npcObject.isConfirmed)
+        {
+            tmpTextComponent.text = "<s>\"" + tmpTextComponent.text + "\"</s>";
+            buttonComponent.enabled = false;
+        }
+
+        else {
+            tmpTextComponent.text = "\"" + tmpTextComponent.text + "\"";
+        }
     }
 }

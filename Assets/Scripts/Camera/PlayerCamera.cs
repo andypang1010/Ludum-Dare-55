@@ -22,7 +22,7 @@ public class PlayerCamera : MonoBehaviour
 
     void Update()
     {
-        if (DialogueManager.Instance.dialogueIsPlaying || BookUIManager.Instance.showingBook) {
+        if (BookUIManager.Instance.showingBook) {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 

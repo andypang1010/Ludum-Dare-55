@@ -10,11 +10,13 @@ public class BookUIManager : MonoBehaviour
 
     public GameObject sentencePrefab;
     public GameObject book;
-    public Image npcView;
     public GameObject sentenceParent;
+    public TMP_Text currentGuessText;
+    public Image npcView;
 
     public bool showingBook;
     private NPCObject currNpc;
+    private List<Sentence> currSentences;
 
     void Awake() {
         if (Instance != null) {
@@ -46,10 +48,10 @@ public class BookUIManager : MonoBehaviour
         book.SetActive(false);
     }
 
-    public void ShowSentenceGuesser(NPCObject npcObject)
+    public void ShowSentenceGuesser(NPCObject npc)
     {
-        currNpc = npcObject;
-        npcView.sprite = npcObject.bookView;
+        npcView.sprite = npc.bookView;
+        UpdateGuessText(npc.currentGuess);
         
         for(int i = 0; i < sentenceParent.transform.childCount; i++)
         {
@@ -58,12 +60,29 @@ public class BookUIManager : MonoBehaviour
 
         foreach (NPCObject npcObj in NPCManager.Instance.unlockedNPCs)
         {
-            foreach (string sentence in npcObj.sentences) {
+            // foreach (string sentence in npcObj.sentences) {
                 GameObject sentenceObj = Instantiate(sentencePrefab);
                 Sentence sentenceComponent = sentenceObj.GetComponent<Sentence>();
-                sentenceComponent.Setup(npcObj, sentence);
+                currSentences.Add(sentenceComponent);
+
+                sentenceComponent.Setup(npcObj, npcObj.sentence, npcObj.isConfirmed);
+                
                 sentenceObj.transform.SetParent(sentenceParent.transform, false);
-            }
+            // }
+        }
+    }
+
+    public void UpdateGuessText(string guess)
+    {
+        currentGuessText.text = guess.Length > 0 ? "\"" + guess + "\"" : "";
+    }
+
+    public IEnumerator UnlockNewNPCs(List<NPCObject> newUnlocked)
+    {
+        foreach(Sentence sentence in currSentences)
+        {
+            sentence.UpdateSentence();
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }
