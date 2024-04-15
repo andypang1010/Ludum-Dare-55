@@ -51,7 +51,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void FixedUpdate() {
-        Move();
+        if (!BookUIManager.Instance.showingBook) {
+            Move();
+        }
     }
 
     void GetInput() {
