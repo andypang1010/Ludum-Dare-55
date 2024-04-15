@@ -40,14 +40,14 @@ public class BookUIManager : MonoBehaviour
 
     public void ShowBook()
     {
-        Debug.Log("show book");
+        // TODO: play open book sound?
         showingBook = true;
         book.SetActive(true);
     }
 
     public void HideBook()
     {
-        Debug.Log("hide book");
+        // TODO: play close book sound?
         showingBook = false;
         book.SetActive(false);
         if(playCamAnimation)
@@ -120,11 +120,14 @@ public class BookUIManager : MonoBehaviour
             {
                 continue;
             }
+            // TODO: play confirmed sound
             sentence.UpdateSentence();
             yield return new WaitForSeconds(0.5f);
         }
+        // TODO: test unlock new
         foreach(NPCObject npc in  newUnlocked)
         {
+            // TODO: play confirmed sound
             CreateNewSentence(npc);
             yield return new WaitForSeconds(0.5f);
         }

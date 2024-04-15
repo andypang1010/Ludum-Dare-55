@@ -49,14 +49,10 @@ public class NPCTrigger : MonoBehaviour
         {
             if (!BookUIManager.Instance.showingBook)
             {
-                Debug.Log(name);
-                Debug.Log(transform.parent.name);
                 BookUIManager.Instance.ShowSentenceGuesser(npc);
             }
             else
             {
-                Debug.Log(name);
-                Debug.Log(transform.parent.name);
                 BookUIManager.Instance.HideBook();
             }
         }

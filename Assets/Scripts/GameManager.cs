@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public GameStates currentGameState;
     public GameObject menuPanel;
 
+    // TODO: add BGM
+
     void Awake() {
         if (Instance != null) {
             Debug.LogWarning("More than one GameManager in scene");

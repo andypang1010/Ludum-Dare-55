@@ -80,7 +80,9 @@ public class PlayerCamera : MonoBehaviour
         foreach (GameObject obj in gameObjects)
         {
             StartCoroutine(LookAtPos(obj.transform.position));
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(lookDuration);
+            // TODO: play puff animation & sound
+            yield return new WaitForSeconds(0.3f);
         }
         playingAnimation = false;
         headBob.enabled = true;
