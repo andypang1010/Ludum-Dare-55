@@ -67,6 +67,7 @@ public class BookUIManager : MonoBehaviour
         ShowBook();
 
         npcView.sprite = npc.bookView;
+
         UpdateGuessText(npc.currentGuess);
         currNpc = npc;
         
