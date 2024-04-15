@@ -65,15 +65,20 @@ public class BookUIManager : MonoBehaviour
         foreach (NPCObject npcObj in NPCManager.Instance.unlockedNPCs)
         {
             // foreach (string sentence in npcObj.sentences) {
-                GameObject sentenceObj = Instantiate(sentencePrefab);
-                Sentence sentenceComponent = sentenceObj.GetComponent<Sentence>();
-                currSentences.Add(sentenceComponent);
-
-                sentenceComponent.Setup(npcObj, npcObj.sentence, !npcObj.isConfirmed);
-                
-                sentenceObj.transform.SetParent(sentenceParent.transform, false);
+            CreateNewSentence(npcObj);
             // }
         }
+    }
+
+    private void CreateNewSentence(NPCObject npc)
+    {
+        GameObject sentenceObj = Instantiate(sentencePrefab);
+        Sentence sentenceComponent = sentenceObj.GetComponent<Sentence>();
+        currSentences.Add(sentenceComponent);
+
+        sentenceComponent.Setup(npc, npc.sentence, !npc.isConfirmed);
+
+        sentenceObj.transform.SetParent(sentenceParent.transform, false);
     }
 
     public void UpdateGuessText(string guess)
@@ -91,6 +96,11 @@ public class BookUIManager : MonoBehaviour
         foreach(Sentence sentence in currSentences)
         {
             sentence.UpdateSentence();
+            yield return new WaitForSeconds(0.5f);
+        }
+        foreach(NPCObject npc in  newUnlocked)
+        {
+            CreateNewSentence(npc);
             yield return new WaitForSeconds(0.5f);
         }
     }
