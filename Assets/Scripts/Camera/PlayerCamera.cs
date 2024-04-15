@@ -13,11 +13,10 @@ public class PlayerCamera : MonoBehaviour
     public float sensY;
     [HideInInspector] public float rotationX, rotationY;
 
-    public float turningRate = 200f;
+    public float lookDuration;
     public HeadBob headBob;
 
     private bool playingAnimation;
-    private Quaternion targetRotation;
 
     void Update()
     {
@@ -43,12 +42,7 @@ public class PlayerCamera : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, rotationY, 0);
         }
 
-        else if (playingAnimation)
-        {
-            cam.transform.rotation = Quaternion.RotateTowards(cam.transform.rotation, targetRotation, turningRate * Time.deltaTime);
-        }
-
-        else
+        else if (!playingAnimation)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -85,11 +79,27 @@ public class PlayerCamera : MonoBehaviour
         headBob.enabled = false;
         foreach (GameObject obj in gameObjects)
         {
-            Vector3 deltaPostition = obj.transform.position - cam.position;
-            targetRotation = Quaternion.LookRotation(deltaPostition, Vector3.up);
+            StartCoroutine(LookAtPos(obj.transform.position));
             yield return new WaitForSeconds(3);
         }
         playingAnimation = false;
         headBob.enabled = true;
+    }
+
+    private IEnumerator LookAtPos(Vector3 pos)
+    {
+        float timeElapsed = 0;
+        Quaternion initRot = cam.rotation;
+        Vector3 deltaPostition = pos - cam.position;
+        Quaternion targetRotation = Quaternion.LookRotation(deltaPostition, Vector3.up);
+
+        while (timeElapsed < lookDuration)
+        {
+            cam.rotation = Quaternion.Slerp(initRot, targetRotation, Mathf.SmoothStep(0, 1, timeElapsed / lookDuration));
+            timeElapsed += Time.deltaTime;
+
+            yield return null;
+        }
+        cam.rotation = targetRotation;
     }
 }

@@ -13087,6 +13087,11 @@ PrefabInstance:
       propertyPath: headBob
       value: 
       objectReference: {fileID: 641957613}
+    - target: {fileID: 7862898333756131676, guid: dc2e2f9be75aa5f459873e385b7b7a4f,
+        type: 3}
+      propertyPath: lookDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9079182451338370231, guid: dc2e2f9be75aa5f459873e385b7b7a4f,
         type: 3}
       propertyPath: m_LocalPosition.x
