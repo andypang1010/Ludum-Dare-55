@@ -7,16 +7,9 @@ using UnityEngine;
 public class NPCTrigger : MonoBehaviour
 {
     public GameObject visualCue;
-    public TextAsset inkJSON;
-    public Transform playerCam;
+    // public TextAsset inkJSON;
     bool isInRange;
     RaycastHit hit;
-
-    void Start()
-    {
-        visualCue.SetActive(false);
-        playerCam = Camera.main.transform;
-    }
 
     // Update is called once per frame
     void Update()
@@ -29,7 +22,7 @@ public class NPCTrigger : MonoBehaviour
         //}
 
         if (isInRange 
-            && Physics.Raycast(new Ray(playerCam.position, playerCam.forward), out hit, Mathf.Infinity, LayerMask.GetMask("Interactable"))
+            && Physics.Raycast(new Ray(Camera.main.transform.position, Camera.main.transform.forward), out hit, Mathf.Infinity, LayerMask.GetMask("Interactable"))
             && transform.parent.gameObject.GetComponentsInChildren<Collider>().Contains(hit.transform.gameObject.GetComponent<Collider>())) {
 
             //hit.transform.gameObject == transform.parent.gameObject.GetComponentInChildren<Collider>().gameObject
