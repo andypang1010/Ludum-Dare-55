@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Crosshair : MonoBehaviour
 {
     public static Crosshair Instance;
-    public float maxDetectionRange = 10f;
+    public float maxDetectionRange = 4f;
     public Sprite defaultCrosshair, interacteCrosshair;
     
     void Awake() {

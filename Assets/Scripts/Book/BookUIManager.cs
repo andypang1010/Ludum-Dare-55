@@ -13,6 +13,8 @@ public class BookUIManager : MonoBehaviour
     public GameObject sentenceParent;
     public TMP_Text currentGuessText;
     public Image npcView;
+    public AudioSource audioSource;
+    public AudioClip openBook, closeBook, confirmedNPC;
 
     public bool showingBook;
     public NPCObject currNpc;
@@ -29,7 +31,8 @@ public class BookUIManager : MonoBehaviour
     }
 
     void Start() {
-        HideBook();
+        showingBook = false;
+        book.SetActive(false);
     }
 
     // Update is called once per frame
@@ -40,14 +43,14 @@ public class BookUIManager : MonoBehaviour
 
     public void ShowBook()
     {
-        // TODO: play open book sound?
+        audioSource.PlayOneShot(openBook, 0.5f);
         showingBook = true;
         book.SetActive(true);
     }
 
     public void HideBook()
     {
-        // TODO: play close book sound?
+        audioSource.PlayOneShot(closeBook, 0.5f);
         showingBook = false;
         book.SetActive(false);
         if(playCamAnimation)
@@ -114,20 +117,25 @@ public class BookUIManager : MonoBehaviour
     private IEnumerator UnlockAnimation(List<NPCObject> newUnlocked)
     {
         playCamAnimation = true;
+
         foreach(Sentence sentence in currSentences)
         {
             if(!sentence.npcObject.isConfirmed)
             {
                 continue;
             }
-            // TODO: play confirmed sound
+            audioSource.PlayOneShot(confirmedNPC, 0.3f);
             sentence.UpdateSentence();
             yield return new WaitForSeconds(0.5f);
         }
+
         // TODO: test unlock new
-        foreach(NPCObject npc in  newUnlocked)
+        foreach(NPCObject npc in newUnlocked)
         {
-            // TODO: play confirmed sound
+
+            // TODO: play confirmed sound (ARE YOU SURE???)
+
+            // audioSource.PlayOneShot(confirmedNPC);
             CreateNewSentence(npc);
             yield return new WaitForSeconds(0.5f);
         }

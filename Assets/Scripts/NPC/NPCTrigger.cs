@@ -13,8 +13,8 @@ public class NPCTrigger : MonoBehaviour
     void Update()
     {
         if (GameManager.Instance.currentGameState != GameManager.GameStates.GAME) return;
-
-        if (!transform.parent.TryGetComponent(out NPCObject parentNPC))
+        
+        if (!transform.parent.TryGetComponent(out NPCObject _))
         {
             if (Physics.Raycast(
                     Camera.main.transform.position,

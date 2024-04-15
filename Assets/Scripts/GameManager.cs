@@ -9,8 +9,7 @@ public class GameManager : MonoBehaviour
     public GameStates currentGameState;
     public GameObject canvas;
     public GameObject menuPanel;
-
-    // TODO: add BGM
+    public GameObject bgm;
 
     void Awake() {
         if (Instance != null) {
@@ -28,6 +27,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         Application.targetFrameRate = frameRate;
+        bgm.SetActive(currentGameState == GameStates.GAME);
 
         switch (currentGameState) {
             case GameStates.MENU:

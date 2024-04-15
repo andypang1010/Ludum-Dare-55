@@ -13,7 +13,7 @@ public class Sentence : MonoBehaviour
 
     public void Setup(NPCObject npcObj, string sentence, bool enabled = true)
     {
-        buttonComponent = GetComponent<Button>();
+        buttonComponent = GetComponentInChildren<Button>();
         tmpTextComponent = GetComponentInChildren<TMP_Text>();
 
         // if the current opened npc is confirmed, disable the button

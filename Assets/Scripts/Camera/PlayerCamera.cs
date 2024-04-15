@@ -7,6 +7,7 @@ public class PlayerCamera : MonoBehaviour
 {
     [Header("Camera")]
     public Transform cam;
+    public float initialRotationX, initialRotationY;
 
     [Header("Sensitivity")]
     public float sensX;
@@ -15,8 +16,15 @@ public class PlayerCamera : MonoBehaviour
 
     public float lookDuration;
     public HeadBob headBob;
+    public AudioSource audioSource;
+    public AudioClip puff;
 
     private bool playingAnimation;
+
+    void Start() {
+        rotationX = initialRotationX;
+        rotationY = initialRotationY;
+    }
 
     void Update()
     {
@@ -81,7 +89,8 @@ public class PlayerCamera : MonoBehaviour
         {
             StartCoroutine(LookAtPos(obj.transform.position));
             yield return new WaitForSeconds(lookDuration);
-            // TODO: play puff animation & sound
+            audioSource.PlayOneShot(puff);
+            // TODO: play puff animation
             yield return new WaitForSeconds(0.3f);
         }
         playingAnimation = false;
