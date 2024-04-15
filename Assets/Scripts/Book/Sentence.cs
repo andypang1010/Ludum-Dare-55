@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Sentence : MonoBehaviour
 {
-    private NPCObject npcObject;
+    public NPCObject npcObject { get; private set; }
     private string sentence;
     private Button buttonComponent;
     private TMP_Text tmpTextComponent;
@@ -29,6 +29,11 @@ public class Sentence : MonoBehaviour
     public void Guess()
     {
         NPCManager.Instance.GuessSentence(sentence);
+    }
+
+    public void SetEnabled(bool enabled)
+    {
+        buttonComponent.enabled = enabled;
     }
 
     public void UpdateSentence()

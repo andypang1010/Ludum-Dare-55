@@ -24,12 +24,7 @@ public class NPCTrigger : MonoBehaviour
                     LayerMask.GetMask("Interactable"))
                 && hit.transform.gameObject.GetComponent<Collider>() == GetComponent<Collider>())
             {
-                print(gameObject.name + " NO PARENT, RAYCAST FOUND");
                 CheckBook(GetComponent<NPCObject>());
-            }
-
-            else {
-                print(gameObject.name + " NO PARENT, RAYCAST NOT FOUND");
             }
         }
 
@@ -43,12 +38,7 @@ public class NPCTrigger : MonoBehaviour
                     LayerMask.GetMask("Interactable"))
                 && transform.parent.gameObject.GetComponentsInChildren<Collider>().Contains(hit.transform.gameObject.GetComponent<Collider>()))
             {
-                print(transform.parent.name + " HAS PARENT, RAYCAST FOUND");
                 CheckBook(GetComponentInParent<NPCObject>());
-            }
-
-            else {
-                print(transform.parent.name + " HAS PARENT, RAYCAST NOT FOUND");
             }
         }
     }
@@ -59,14 +49,10 @@ public class NPCTrigger : MonoBehaviour
         {
             if (!BookUIManager.Instance.showingBook)
             {
-                Debug.Log(name);
-                Debug.Log(transform.parent.name);
                 BookUIManager.Instance.ShowSentenceGuesser(npc);
             }
             else
             {
-                Debug.Log(name);
-                Debug.Log(transform.parent.name);
                 BookUIManager.Instance.HideBook();
             }
         }
