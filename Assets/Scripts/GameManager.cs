@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set;}
     public int frameRate = 60;
     public GameStates currentGameState;
+    public GameObject canvas;
     public GameObject menuPanel;
 
     void Awake() {
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
 
     void Start() {
         currentGameState = GameStates.MENU;
+        canvas.SetActive(true);
     }
     
     void Update()
