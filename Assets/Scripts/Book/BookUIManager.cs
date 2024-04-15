@@ -17,6 +17,8 @@ public class BookUIManager : MonoBehaviour
     public bool showingBook;
     public NPCObject currNpc;
     private List<Sentence> currSentences = new List<Sentence>();
+    private bool playCamAnimation;
+    private List<NPCObject> justGuessed;
 
     void Awake() {
         if (Instance != null) {
@@ -46,6 +48,16 @@ public class BookUIManager : MonoBehaviour
     {
         showingBook = false;
         book.SetActive(false);
+        if(playCamAnimation)
+        {
+            List<GameObject> gameObjects = new List<GameObject>();
+            foreach(NPCObject npc in justGuessed)
+            {
+                gameObjects.Add(npc.gameObject);
+            }
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCamera>().PlayFollowAnimation(gameObjects);
+            playCamAnimation = false;
+        }
     }
 
     public void ShowSentenceGuesser(NPCObject npc)
@@ -86,13 +98,15 @@ public class BookUIManager : MonoBehaviour
         currentGuessText.text = guess.Length > 0 ? "\"" + guess + "\"" : "";
     }
 
-    public void UnlockNewNPCs(List<NPCObject> newUnlocked)
+    public void UnlockNewNPCs(List<NPCObject> justGuessed, List<NPCObject> newUnlocked)
     {
+        this.justGuessed = justGuessed;
         StartCoroutine(UnlockAnimation(newUnlocked));
     }
 
     private IEnumerator UnlockAnimation(List<NPCObject> newUnlocked)
     {
+        playCamAnimation = true;
         foreach(Sentence sentence in currSentences)
         {
             sentence.UpdateSentence();

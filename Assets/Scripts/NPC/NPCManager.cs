@@ -49,7 +49,6 @@ public class NPCManager : MonoBehaviour
         }
         
         CheckNewUnlock();
-
     }
 
     private void CheckNewUnlock()
@@ -76,6 +75,6 @@ public class NPCManager : MonoBehaviour
                 newUnlocked.Add(npc);
             }
         }
-        BookUIManager.Instance.UnlockNewNPCs(newUnlocked);
+        BookUIManager.Instance.UnlockNewNPCs(new List<NPCObject>(correctGuessedNPCs), newUnlocked);
     }
 }
