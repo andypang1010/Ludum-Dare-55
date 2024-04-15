@@ -158,7 +158,6 @@ Transform:
   - {fileID: 4912288237864611603}
   - {fileID: 7291322782080240925}
   - {fileID: 2555031096897961544}
-  - {fileID: 7351663328494960659}
   - {fileID: 1827151295277980479}
   - {fileID: 7767263336358875434}
   - {fileID: 3579682285369385966}
@@ -936,7 +935,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sentence: What's the worst you can do to me?
   currentGuess: 
-  bookView: {fileID: 0}
+  bookView: {fileID: 515689852, guid: 9dfa1f058203e1d429d406783ca651cf, type: 3}
   nextUnlockedNPC: {fileID: 0}
   isConfirmed: 0
 --- !u!114 &456048996
@@ -1037,7 +1036,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sentence: I want to see my cousin Key!
   currentGuess: 
-  bookView: {fileID: 0}
+  bookView: {fileID: -633844649, guid: 5fe0c4fe25e97464face8fcda4461690, type: 3}
   nextUnlockedNPC: {fileID: 0}
   isConfirmed: 0
 --- !u!114 &532201969
@@ -1184,7 +1183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sentence: Just because we share the same last name doesn't mean we're related
   currentGuess: 
-  bookView: {fileID: 0}
+  bookView: {fileID: 1556165860, guid: aa625032edc43ba4c9fc36862f8e8f79, type: 3}
   nextUnlockedNPC: {fileID: 0}
   isConfirmed: 0
 --- !u!1 &641957611
@@ -1236,7 +1235,7 @@ MonoBehaviour:
   enabled: 1
   player: {fileID: 1325355324}
   walkAmplitude: 0.5
-  walkFrequency: 15
+  walkFrequency: 7.5
   idleAmplitude: 0.05
   idleFrequency: 1
   stablizedOffset: 30
@@ -1398,97 +1397,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3919237738045160604, guid: dc2e2f9be75aa5f459873e385b7b7a4f,
     type: 3}
   m_PrefabInstance: {fileID: 2270819367986640305}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &889061995
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 7351663328494960659}
-    m_Modifications:
-    - target: {fileID: 7979387621340106611, guid: 69b3da9b14839de41989c6ee52b1fe2a,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7979387621340106611, guid: 69b3da9b14839de41989c6ee52b1fe2a,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7979387621340106611, guid: 69b3da9b14839de41989c6ee52b1fe2a,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7979387621340106611, guid: 69b3da9b14839de41989c6ee52b1fe2a,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7979387621340106611, guid: 69b3da9b14839de41989c6ee52b1fe2a,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7979387621340106611, guid: 69b3da9b14839de41989c6ee52b1fe2a,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7979387621340106611, guid: 69b3da9b14839de41989c6ee52b1fe2a,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7979387621340106611, guid: 69b3da9b14839de41989c6ee52b1fe2a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7979387621340106611, guid: 69b3da9b14839de41989c6ee52b1fe2a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7979387621340106611, guid: 69b3da9b14839de41989c6ee52b1fe2a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8089296391017894336, guid: 69b3da9b14839de41989c6ee52b1fe2a,
-        type: 3}
-      propertyPath: crosshair
-      value: 
-      objectReference: {fileID: 98874482}
-    - target: {fileID: 8089296391017894336, guid: 69b3da9b14839de41989c6ee52b1fe2a,
-        type: 3}
-      propertyPath: defaultCrosshair
-      value: 
-      objectReference: {fileID: -25533319, guid: c70765854a5fe874b975c8dd45c899c1,
-        type: 3}
-    - target: {fileID: 8089296391017894336, guid: 69b3da9b14839de41989c6ee52b1fe2a,
-        type: 3}
-      propertyPath: interactableCrosshair
-      value: 
-      objectReference: {fileID: 851768063, guid: c70765854a5fe874b975c8dd45c899c1,
-        type: 3}
-    - target: {fileID: 8185315639368156298, guid: 69b3da9b14839de41989c6ee52b1fe2a,
-        type: 3}
-      propertyPath: m_Name
-      value: NPC Trigger
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 69b3da9b14839de41989c6ee52b1fe2a, type: 3}
---- !u!4 &889061996 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7979387621340106611, guid: 69b3da9b14839de41989c6ee52b1fe2a,
-    type: 3}
-  m_PrefabInstance: {fileID: 889061995}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &909287748
 PrefabInstance:
@@ -2049,7 +1957,7 @@ PrefabInstance:
     - target: {fileID: 6552631704916652354, guid: 6816d0710ef187941af086c2a93d1f1c,
         type: 3}
       propertyPath: m_Color.a
-      value: 0.21960784
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6552631704916652354, guid: 6816d0710ef187941af086c2a93d1f1c,
         type: 3}
@@ -2197,7 +2105,8 @@ PrefabInstance:
       value: -50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2256931736368834036, guid: 6816d0710ef187941af086c2a93d1f1c, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6816d0710ef187941af086c2a93d1f1c, type: 3}
@@ -2347,7 +2256,6 @@ MonoBehaviour:
   - {fileID: 489321859}
   - {fileID: 532201969}
   - {fileID: 3801544310098110012}
-  - {fileID: 5716822194252456156}
   - {fileID: 608420438}
   isPlayingAnimation: 0
 --- !u!114 &1779561153
@@ -2649,6 +2557,7 @@ Transform:
   - {fileID: 5715373073932876258}
   - {fileID: 2541043123683570803}
   - {fileID: 7390863927376638609}
+  - {fileID: 7351663328494960659}
   m_Father: {fileID: 2866497350091987948}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2000738081
@@ -4080,7 +3989,7 @@ GameObject:
   - component: {fileID: 4761430387923101530}
   - component: {fileID: 1228543965272561325}
   - component: {fileID: 7054600951802278561}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pCube8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4591,7 +4500,7 @@ GameObject:
   - component: {fileID: 4072401635297010753}
   - component: {fileID: 1531755312075097818}
   m_Layer: 6
-  m_Name: Plants1
+  m_Name: Plant
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -8557,7 +8466,7 @@ PrefabInstance:
     - target: {fileID: 776116882296566812, guid: eb0e74f574f96744da065810d1a752c0,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2135678664003771892, guid: eb0e74f574f96744da065810d1a752c0,
         type: 3}
@@ -8568,7 +8477,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 56fbbab406cb6da4895a0a4ba86cfd83,
+      objectReference: {fileID: 1760584003, guid: 7a699b22e6583c740873d5207f299f9b,
         type: 3}
     - target: {fileID: 2135678664003771892, guid: eb0e74f574f96744da065810d1a752c0,
         type: 3}
@@ -8594,7 +8503,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 56fbbab406cb6da4895a0a4ba86cfd83,
+      objectReference: {fileID: 1760584003, guid: 7a699b22e6583c740873d5207f299f9b,
         type: 3}
     - target: {fileID: 2224411122094082693, guid: eb0e74f574f96744da065810d1a752c0,
         type: 3}
@@ -8635,6 +8544,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165167736277914088, guid: eb0e74f574f96744da065810d1a752c0,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 1024
       objectReference: {fileID: 0}
     - target: {fileID: 5041234196104236051, guid: eb0e74f574f96744da065810d1a752c0,
         type: 3}
@@ -8750,7 +8664,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 56fbbab406cb6da4895a0a4ba86cfd83,
+      objectReference: {fileID: 1760584003, guid: 7a699b22e6583c740873d5207f299f9b,
         type: 3}
     - target: {fileID: 6442405249332664975, guid: eb0e74f574f96744da065810d1a752c0,
         type: 3}
@@ -8792,6 +8706,11 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4278190080
       objectReference: {fileID: 0}
+    - target: {fileID: 7021060461870057201, guid: eb0e74f574f96744da065810d1a752c0,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 1024
+      objectReference: {fileID: 0}
     - target: {fileID: 7227888335263560261, guid: eb0e74f574f96744da065810d1a752c0,
         type: 3}
       propertyPath: m_fontColor.b
@@ -8811,6 +8730,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227888335263560261, guid: eb0e74f574f96744da065810d1a752c0,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 7792241095971522491, guid: eb0e74f574f96744da065810d1a752c0,
         type: 3}
@@ -9500,7 +9424,7 @@ GameObject:
   - component: {fileID: 1278488081718053567}
   - component: {fileID: 110743557801236449}
   - component: {fileID: 7604988991067550503}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pCube19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9661,7 +9585,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sentence: Glad I'm not Scout
   currentGuess: 
-  bookView: {fileID: 0}
+  bookView: {fileID: 130221641, guid: 97a0a4c4a87ce8d458c003b01d5aad55, type: 3}
   nextUnlockedNPC: {fileID: 0}
   isConfirmed: 0
 --- !u!4 &1537539678579007086
@@ -10571,7 +10495,7 @@ GameObject:
   - component: {fileID: 4676101451390526952}
   - component: {fileID: 1197756727964470077}
   - component: {fileID: 4670250242829124957}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pCube7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12642,6 +12566,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6062155582985558927, guid: dc2e2f9be75aa5f459873e385b7b7a4f,
+        type: 3}
+      propertyPath: walkSpeed
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7862898333756131676, guid: dc2e2f9be75aa5f459873e385b7b7a4f,
         type: 3}
       propertyPath: cam
@@ -14288,7 +14217,7 @@ GameObject:
   - component: {fileID: 4818757708090077961}
   - component: {fileID: 803984745988768078}
   - component: {fileID: 8875075966714134511}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Pencil Case
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15171,7 +15100,7 @@ GameObject:
   - component: {fileID: 3022689639612938111}
   - component: {fileID: 342978991854060761}
   - component: {fileID: 714711465966167773}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pCube81
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15232,7 +15161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sentence: One day, I will take over the world!
   currentGuess: 
-  bookView: {fileID: 0}
+  bookView: {fileID: -934556986, guid: bb0d9dfe918eb3847944cd38de4d6b91, type: 3}
   nextUnlockedNPC: {fileID: 0}
   isConfirmed: 0
 --- !u!64 &2871657585963031912
@@ -15504,7 +15433,7 @@ GameObject:
   - component: {fileID: 5937947146747374731}
   - component: {fileID: 8910294729903139604}
   - component: {fileID: 1442087362628498013}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pCube11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16937,7 +16866,7 @@ GameObject:
   - component: {fileID: 6310319852819668760}
   - component: {fileID: 4039486202799697085}
   - component: {fileID: 8178353527531739164}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pCube6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18674,7 +18603,7 @@ GameObject:
   - component: {fileID: 1068965312211006511}
   - component: {fileID: 3729415875831311027}
   - component: {fileID: 6524965926008465119}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pCube12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19623,7 +19552,7 @@ GameObject:
   - component: {fileID: 891479960807166961}
   - component: {fileID: 9087892202924728007}
   - component: {fileID: 3149006863944191784}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pCube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19815,7 +19744,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sentence: I swear I'm not a control-freak
   currentGuess: 
-  bookView: {fileID: 0}
+  bookView: {fileID: -421088747, guid: 2a6111d0f38f56243a90bdeeec632403, type: 3}
   nextUnlockedNPC: {fileID: 0}
   isConfirmed: 0
 --- !u!4 &3801607128070697568
@@ -22162,7 +22091,7 @@ GameObject:
   - component: {fileID: 5346435461298335990}
   - component: {fileID: 8020196574791190169}
   - component: {fileID: 5014761423257371805}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: polySurface36
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23327,7 +23256,7 @@ GameObject:
   - component: {fileID: 1790986840948717850}
   - component: {fileID: 1959403410639817380}
   - component: {fileID: 8312811485290315262}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pCube21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25346,7 +25275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sentence: Good morning Mira! You look shiny as always!
   currentGuess: 
-  bookView: {fileID: 0}
+  bookView: {fileID: -2087483384, guid: b02e0c0673fdfeb4db280d072151722c, type: 3}
   nextUnlockedNPC: {fileID: 0}
   isConfirmed: 0
 --- !u!1 &5031280705141193576
@@ -25411,7 +25340,7 @@ GameObject:
   - component: {fileID: 711429727682951203}
   - component: {fileID: 2290028645246503939}
   - component: {fileID: 4168578405792124648}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pCube82
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25610,7 +25539,7 @@ GameObject:
   - component: {fileID: 6080498887772695165}
   - component: {fileID: 1782519869319813236}
   - component: {fileID: 7605423137375289460}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pCube14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27853,7 +27782,7 @@ GameObject:
   - component: {fileID: 7788243461657568382}
   - component: {fileID: 6033180714959105085}
   - component: {fileID: 4784186172496663679}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pCube28
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28699,7 +28628,7 @@ GameObject:
   - component: {fileID: 1512837191662580261}
   - component: {fileID: 2722787197444704986}
   - component: {fileID: 7562083946580386237}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pCube10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28774,23 +28703,6 @@ Transform:
   - {fileID: 4717071934682751810}
   m_Father: {fileID: 1924899348}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5716822194252456156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6325265610037070192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b0e20e1f02bc294787b8d63f79e72b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sentence: I can never tell which one is Claire
-  currentGuess: 
-  bookView: {fileID: 0}
-  nextUnlockedNPC: {fileID: 0}
-  isConfirmed: 0
 --- !u!33 &5721686793329335692
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -29575,7 +29487,7 @@ GameObject:
   - component: {fileID: 7874878635369642433}
   - component: {fileID: 7080030181991247910}
   - component: {fileID: 4764347574774378755}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pCube4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31110,7 +31022,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sentence: My head through your body?
   currentGuess: 
-  bookView: {fileID: 0}
+  bookView: {fileID: -1676616850, guid: e5124e40d8eb53849806fd9ca39eb800, type: 3}
   nextUnlockedNPC: {fileID: 0}
   isConfirmed: 0
 --- !u!4 &6256025625062095178
@@ -31538,8 +31450,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7351663328494960659}
-  - component: {fileID: 5716822194252456156}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Table
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -33699,7 +33610,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sentence: "I don\u2019t even need a clock, timer is all I need  "
   currentGuess: 
-  bookView: {fileID: 0}
+  bookView: {fileID: -775064032, guid: 74b3e69f63c5f4542aa4d85f0c03470b, type: 3}
   nextUnlockedNPC: {fileID: 0}
   isConfirmed: 0
 --- !u!1 &6966161020552398551
@@ -33825,7 +33736,7 @@ GameObject:
   - component: {fileID: 1788859436544467470}
   - component: {fileID: 8366216692501076231}
   - component: {fileID: 3692532399215993930}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Drawer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34538,7 +34449,7 @@ GameObject:
   - component: {fileID: 5302685908936028797}
   - component: {fileID: 1507567391779204403}
   - component: {fileID: 9208483522039461790}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pCube3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35716,7 +35627,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 889061996}
   - {fileID: 9052948287869697355}
   - {fileID: 3367599584985362407}
   - {fileID: 4568225837101725906}
@@ -35740,7 +35650,7 @@ Transform:
   - {fileID: 3780392179956786915}
   - {fileID: 8765332067395383999}
   - {fileID: 4034960908519297902}
-  m_Father: {fileID: 66814666}
+  m_Father: {fileID: 1924899348}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7362205277637997338
 MeshFilter:
@@ -36199,7 +36109,7 @@ GameObject:
   - component: {fileID: 4658925507317169857}
   - component: {fileID: 3791514613235049209}
   - component: {fileID: 6096741803580037022}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pCube5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38991,7 +38901,7 @@ GameObject:
   - component: {fileID: 1772372361121812161}
   - component: {fileID: 8460421109144233129}
   - component: {fileID: 7444438774485040864}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pCube16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41462,7 +41372,7 @@ GameObject:
   - component: {fileID: 6447938024881905929}
   - component: {fileID: 3316645469182873377}
   - component: {fileID: 6637322063492123707}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pCube15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41582,7 +41492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sentence: Wish I could see myself
   currentGuess: 
-  bookView: {fileID: 0}
+  bookView: {fileID: 719301087, guid: 53afd3d8585e4ff43bd2b16875aaae89, type: 3}
   nextUnlockedNPC: {fileID: 0}
   isConfirmed: 0
 --- !u!33 &8569370707864736485
@@ -41784,7 +41694,7 @@ GameObject:
   - component: {fileID: 2553522290506183607}
   - component: {fileID: 8871794841752118622}
   - component: {fileID: 3489105164650921900}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: polySurface37
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42282,7 +42192,7 @@ GameObject:
   - component: {fileID: 1178532615027603844}
   - component: {fileID: 4288301401525350162}
   - component: {fileID: 1613854051248591259}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pCube9
   m_TagString: Untagged
   m_Icon: {fileID: 0}

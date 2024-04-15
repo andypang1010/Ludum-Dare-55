@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,6 +25,11 @@ public class NPCManager : MonoBehaviour
     void Start() {
         // confirmedNPCs = new HashSet<NPCObject>();
         correctGuessedNPCs = new HashSet<NPCObject>();
+
+        // UnityEngine.Random random = new UnityEngine.Random();
+        System.Random random = new System.Random();
+        random.Next();
+        unlockedNPCs = unlockedNPCs.OrderBy(x => UnityEngine.Random.Range(0, int.MaxValue)).ToList();
     }
 
     public void GuessSentence(string sentence)
