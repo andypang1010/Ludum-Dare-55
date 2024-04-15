@@ -3,55 +3,70 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NPCTrigger : MonoBehaviour
 {
-    public GameObject visualCue;
-    // public TextAsset inkJSON;
-    bool isInRange;
     RaycastHit hit;
 
     // Update is called once per frame
     void Update()
     {
-        //Physics.SphereCast(new Ray(playerCam.position, playerCam.forward), 0.001f, out hit, Mathf.Infinity, LayerMask.GetMask("Interactable"));
-        //Physics.Raycast(new Ray(playerCam.position, playerCam.forward), out hit, Mathf.Infinity, LayerMask.GetMask("Interactable"));
-        //if (hit.collider != null)
-        //{
-        //    Debug.Log(hit.collider.gameObject.transform.parent.name);
-        //}
+        if (!transform.parent.TryGetComponent(out NPCObject parentNPC))
+        {
+            if (Physics.Raycast(
+                    Camera.main.transform.position,
+                    Camera.main.transform.forward,
+                    out hit,
+                    Crosshair.Instance.maxDetectionRange,
+                    LayerMask.GetMask("Interactable"))
+                && hit.transform.gameObject.GetComponent<Collider>() == GetComponent<Collider>())
+            {
+                print(gameObject.name + " NO PARENT, RAYCAST FOUND");
+                CheckBook(GetComponent<NPCObject>());
+            }
 
-        if (isInRange 
-            && Physics.Raycast(new Ray(Camera.main.transform.position, Camera.main.transform.forward), out hit, Mathf.Infinity, LayerMask.GetMask("Interactable"))
-            && transform.parent.gameObject.GetComponentsInChildren<Collider>().Contains(hit.transform.gameObject.GetComponent<Collider>())) {
+            else {
+                print(gameObject.name + " NO PARENT, RAYCAST NOT FOUND");
+            }
+        }
 
-            //hit.transform.gameObject == transform.parent.gameObject.GetComponentInChildren<Collider>().gameObject
+        else
+        {
+            if (Physics.Raycast(
+                    Camera.main.transform.position,
+                    Camera.main.transform.forward,
+                    out hit,
+                    Crosshair.Instance.maxDetectionRange,
+                    LayerMask.GetMask("Interactable"))
+                && transform.parent.gameObject.GetComponentsInChildren<Collider>().Contains(hit.transform.gameObject.GetComponent<Collider>()))
+            {
+                print(transform.parent.name + " HAS PARENT, RAYCAST FOUND");
+                CheckBook(GetComponentInParent<NPCObject>());
+            }
 
-            visualCue.SetActive(true);
-            
-            if (InputController.GetInteract()) {
-                if (!BookUIManager.Instance.showingBook) {
-                    NPCObject npcObject = GetComponentInParent<NPCObject>();
-
-                    BookUIManager.Instance.ShowSentenceGuesser(npcObject);
-                }
-
-                else if (BookUIManager.Instance.showingBook) {
-                    BookUIManager.Instance.HideBook();
-                }
+            else {
+                print(transform.parent.name + " HAS PARENT, RAYCAST NOT FOUND");
             }
         }
     }
 
-    private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.CompareTag("Player")) {
-            isInRange = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other) {
-        if (other.gameObject.CompareTag("Player")) {
-            isInRange = false;
+    private void CheckBook(NPCObject npc)
+    {
+        if (InputController.GetInteract())
+        {
+            if (!BookUIManager.Instance.showingBook)
+            {
+                Debug.Log(name);
+                Debug.Log(transform.parent.name);
+                BookUIManager.Instance.ShowSentenceGuesser(npc);
+            }
+            else
+            {
+                Debug.Log(name);
+                Debug.Log(transform.parent.name);
+                BookUIManager.Instance.HideBook();
+            }
         }
     }
 }

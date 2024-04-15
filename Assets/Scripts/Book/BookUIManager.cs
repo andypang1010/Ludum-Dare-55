@@ -40,12 +40,14 @@ public class BookUIManager : MonoBehaviour
 
     public void ShowBook()
     {
+        Debug.Log("show book");
         showingBook = true;
         book.SetActive(true);
     }
 
     public void HideBook()
     {
+        Debug.Log("hide book");
         showingBook = false;
         book.SetActive(false);
         if(playCamAnimation)
