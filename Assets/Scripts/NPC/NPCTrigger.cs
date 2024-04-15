@@ -3,53 +3,50 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NPCTrigger : MonoBehaviour
 {
-    float maxDetectionRange = 10f;
     RaycastHit hit;
 
     // Update is called once per frame
     void Update()
     {
-        //Physics.SphereCast(new Ray(playerCam.position, playerCam.forward), 0.001f, out hit, Mathf.Infinity, LayerMask.GetMask("Interactable"));
-        //Physics.Raycast(new Ray(playerCam.position, playerCam.forward), out hit, Mathf.Infinity, LayerMask.GetMask("Interactable"));
-        //Physics.Raycast(
-        //            Camera.main.transform.position,
-        //            Camera.main.transform.forward,
-        //            out hit,
-        //            maxDetectionRange,
-        //            LayerMask.GetMask("Interactable"));
-        //if (hit.collider != null)
-        //{
-        //    Debug.Log(hit.collider.gameObject.transform.parent.name);
-        //}
-
-
         if (!transform.parent.TryGetComponent(out NPCObject parentNPC))
         {
             if (Physics.Raycast(
                     Camera.main.transform.position,
                     Camera.main.transform.forward,
                     out hit,
-                    maxDetectionRange,
+                    Crosshair.Instance.maxDetectionRange,
                     LayerMask.GetMask("Interactable"))
                 && hit.transform.gameObject.GetComponent<Collider>() == GetComponent<Collider>())
             {
+                print(gameObject.name + " NO PARENT, RAYCAST FOUND");
                 CheckBook(GetComponent<NPCObject>());
             }
+
+            else {
+                print(gameObject.name + " NO PARENT, RAYCAST NOT FOUND");
+            }
         }
+
         else
         {
             if (Physics.Raycast(
                     Camera.main.transform.position,
                     Camera.main.transform.forward,
                     out hit,
-                    maxDetectionRange,
+                    Crosshair.Instance.maxDetectionRange,
                     LayerMask.GetMask("Interactable"))
                 && transform.parent.gameObject.GetComponentsInChildren<Collider>().Contains(hit.transform.gameObject.GetComponent<Collider>()))
             {
+                print(transform.parent.name + " HAS PARENT, RAYCAST FOUND");
                 CheckBook(GetComponentInParent<NPCObject>());
+            }
+
+            else {
+                print(transform.parent.name + " HAS PARENT, RAYCAST NOT FOUND");
             }
         }
     }

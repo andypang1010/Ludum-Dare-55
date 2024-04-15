@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NPCManager : MonoBehaviour
 {
     public static NPCManager Instance;
-
     public int minCorrectCount = 3;
     public List<NPCObject> unlockedNPCs;
     // public HashSet<NPCObject> confirmedNPCs;
