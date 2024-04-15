@@ -12,8 +12,31 @@ public class NPCObject : MonoBehaviour
     // public bool isRelevant;
     public NPCObject nextUnlockedNPC;
     public bool isConfirmed;
+    public GameObject original;
+    public GameObject animated;
 
-    public bool GuessCorrect() {
+    private void Start()
+    {
+        if (animated != null)
+        {
+            animated.SetActive(false);
+        }
+    }
+
+    public bool GuessCorrect()
+    {
         return sentence == currentGuess;
+    }
+
+    public void PlayAnimated()
+    {
+        if (original != null)
+        {
+            original.SetActive(false);
+        }
+        if (animated != null)
+        {
+            animated.SetActive(true);
+        }
     }
 }

@@ -55,12 +55,7 @@ public class BookUIManager : MonoBehaviour
         book.SetActive(false);
         if(playCamAnimation)
         {
-            List<GameObject> gameObjects = new List<GameObject>();
-            foreach(NPCObject npc in justGuessed)
-            {
-                gameObjects.Add(npc.gameObject);
-            }
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCamera>().PlayFollowAnimation(gameObjects);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCamera>().PlayFollowAnimation(justGuessed);
             playCamAnimation = false;
         }
     }
