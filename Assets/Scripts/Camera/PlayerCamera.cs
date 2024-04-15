@@ -13,6 +13,11 @@ public class PlayerCamera : MonoBehaviour
     public float sensY;
     [HideInInspector] public float rotationX, rotationY;
 
+    public float turningRate = 30f;
+
+    private bool playingAnimation;
+    private Quaternion targetRotation;
+
     void Start()
     {
         // Centers and hide cursor
@@ -22,18 +27,24 @@ public class PlayerCamera : MonoBehaviour
 
     void Update()
     {
-        if (BookUIManager.Instance.showingBook) {
+        
+        if (BookUIManager.Instance.showingBook)
+        {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 
             // Update camera rotation
             cam.rotation = Quaternion.Euler(rotationX, rotationY, 0);
-            
+
             // Update player rotation
             transform.rotation = Quaternion.Euler(0, rotationY, 0);
         }
-
-        else {
+        else if (playingAnimation)
+        {
+            cam.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turningRate * Time.deltaTime);
+        }
+        else
+        {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
@@ -52,17 +63,26 @@ public class PlayerCamera : MonoBehaviour
 
             // Update camera rotation
             cam.rotation = Quaternion.Euler(rotationX, rotationY, 0);
-            
+
             // Update player rotation
             transform.rotation = Quaternion.Euler(0, rotationY, 0);
         }
     }
 
-    //public IEnumerator FollowAnimation(List<GameObject> gameObjects)
-    //{
-    //    foreach(GameObject gameObject in gameObjects)
-    //    {
+    public void PlayFollowAnimation(List<GameObject> gameObjects)
+    {
+        StartCoroutine(FollowAnimation(gameObjects));
+    }
 
-    //    }
-    //}
+    private IEnumerator FollowAnimation(List<GameObject> gameObjects)
+    {
+        playingAnimation = true;
+        foreach (GameObject obj in gameObjects)
+        {
+            Vector3 deltaPostition = obj.transform.position - cam.position;
+            targetRotation = Quaternion.LookRotation(deltaPostition, Vector3.up);
+            yield return new WaitForSeconds(10);
+        }
+        playingAnimation = false;
+    }
 }
