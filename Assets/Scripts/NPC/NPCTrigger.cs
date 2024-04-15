@@ -24,6 +24,8 @@ public class NPCTrigger : MonoBehaviour
         //{
         //    Debug.Log(hit.collider.gameObject.transform.parent.name);
         //}
+
+
         if (!transform.parent.TryGetComponent(out NPCObject parentNPC))
         {
             if (Physics.Raycast(
@@ -34,10 +36,7 @@ public class NPCTrigger : MonoBehaviour
                     LayerMask.GetMask("Interactable"))
                 && hit.transform.gameObject.GetComponent<Collider>() == GetComponent<Collider>())
             {
-                if (!BookUIManager.Instance.showingBook && InputController.GetInteract())
-                {
-                    CheckBook(GetComponent<NPCObject>());
-                }
+                CheckBook(GetComponent<NPCObject>());
             }
         }
         else
