@@ -28,6 +28,10 @@ public class NPCManager : MonoBehaviour
     public void GuessSentence(string sentence)
     {
         NPCObject openedNpc = BookUIManager.Instance.currNpc;
+        if (openedNpc.isConfirmed)
+        {
+            return;
+        }
 
         // Select/Deselect
         if (sentence == openedNpc.currentGuess) {

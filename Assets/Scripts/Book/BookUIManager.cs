@@ -64,12 +64,11 @@ public class BookUIManager : MonoBehaviour
 
     public void ShowSentenceGuesser(NPCObject npc)
     {
-        ShowBook();
-
-        npcView.sprite = npc.bookView;
-
-        UpdateGuessText(npc.currentGuess);
         currNpc = npc;
+
+        ShowBook();
+        npcView.sprite = npc.bookView;
+        UpdateGuessText(npc.currentGuess);
         
         for(int i = 0; i < sentenceParent.transform.childCount; i++)
         {
@@ -91,7 +90,7 @@ public class BookUIManager : MonoBehaviour
         Sentence sentenceComponent = sentenceObj.GetComponent<Sentence>();
         currSentences.Add(sentenceComponent);
 
-        sentenceComponent.Setup(npc, npc.sentence, !npc.isConfirmed);
+        sentenceComponent.Setup(npc, npc.sentence, !currNpc.isConfirmed);
 
         sentenceObj.transform.SetParent(sentenceParent.transform, false);
     }
@@ -99,11 +98,16 @@ public class BookUIManager : MonoBehaviour
     public void UpdateGuessText(string guess)
     {
         currentGuessText.text = guess.Length > 0 ? "\"" + guess + "\"" : "";
+        currentGuessText.color = currNpc.isConfirmed ? Color.green : Color.white;
     }
 
     public void UnlockNewNPCs(List<NPCObject> justGuessed, List<NPCObject> newUnlocked)
     {
         this.justGuessed = justGuessed;
+        foreach (Sentence sentence in currSentences)
+        {
+            sentence.SetEnabled(false);
+        }
         StartCoroutine(UnlockAnimation(newUnlocked));
     }
 
@@ -112,6 +116,10 @@ public class BookUIManager : MonoBehaviour
         playCamAnimation = true;
         foreach(Sentence sentence in currSentences)
         {
+            if(!sentence.npcObject.isConfirmed)
+            {
+                continue;
+            }
             sentence.UpdateSentence();
             yield return new WaitForSeconds(0.5f);
         }
@@ -120,5 +128,13 @@ public class BookUIManager : MonoBehaviour
             CreateNewSentence(npc);
             yield return new WaitForSeconds(0.5f);
         }
+        foreach (Sentence sentence in currSentences)
+        {
+            if (!sentence.npcObject.isConfirmed)
+            {
+                sentence.SetEnabled(true);
+            }
+        }
+        UpdateGuessText(currNpc.sentence);
     }
 }
