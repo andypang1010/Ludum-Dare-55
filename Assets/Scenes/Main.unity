@@ -4318,6 +4318,7 @@ MonoBehaviour:
   idleAmplitude: 0.1
   idleFrequency: 1
   stablizedOffset: 30
+  playerMovement: {fileID: 0}
 --- !u!114 &641957614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11740,6 +11741,26 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 330585546}
+    - target: {fileID: 7862898333756131676, guid: dc2e2f9be75aa5f459873e385b7b7a4f,
+        type: 3}
+      propertyPath: cube
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7862898333756131676, guid: dc2e2f9be75aa5f459873e385b7b7a4f,
+        type: 3}
+      propertyPath: headBob
+      value: 
+      objectReference: {fileID: 641957613}
+    - target: {fileID: 7862898333756131676, guid: dc2e2f9be75aa5f459873e385b7b7a4f,
+        type: 3}
+      propertyPath: rotTest
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7862898333756131676, guid: dc2e2f9be75aa5f459873e385b7b7a4f,
+        type: 3}
+      propertyPath: turningRate
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 9079182451338370231, guid: dc2e2f9be75aa5f459873e385b7b7a4f,
         type: 3}
       propertyPath: m_LocalPosition.x

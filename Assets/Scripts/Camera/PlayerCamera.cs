@@ -13,7 +13,8 @@ public class PlayerCamera : MonoBehaviour
     public float sensY;
     [HideInInspector] public float rotationX, rotationY;
 
-    public float turningRate = 30f;
+    public float turningRate = 200f;
+    public HeadBob headBob;
 
     private bool playingAnimation;
     private Quaternion targetRotation;
@@ -27,7 +28,6 @@ public class PlayerCamera : MonoBehaviour
 
     void Update()
     {
-        
         if (BookUIManager.Instance.showingBook)
         {
             Cursor.lockState = CursorLockMode.None;
@@ -41,7 +41,7 @@ public class PlayerCamera : MonoBehaviour
         }
         else if (playingAnimation)
         {
-            cam.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turningRate * Time.deltaTime);
+            cam.transform.rotation = Quaternion.RotateTowards(cam.transform.rotation, targetRotation, turningRate * Time.deltaTime);
         }
         else
         {
@@ -77,12 +77,14 @@ public class PlayerCamera : MonoBehaviour
     private IEnumerator FollowAnimation(List<GameObject> gameObjects)
     {
         playingAnimation = true;
+        headBob.enabled = false;
         foreach (GameObject obj in gameObjects)
         {
             Vector3 deltaPostition = obj.transform.position - cam.position;
             targetRotation = Quaternion.LookRotation(deltaPostition, Vector3.up);
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(3);
         }
         playingAnimation = false;
+        headBob.enabled = true;
     }
 }
