@@ -14,28 +14,61 @@ public class NPCTrigger : MonoBehaviour
     {
         //Physics.SphereCast(new Ray(playerCam.position, playerCam.forward), 0.001f, out hit, Mathf.Infinity, LayerMask.GetMask("Interactable"));
         //Physics.Raycast(new Ray(playerCam.position, playerCam.forward), out hit, Mathf.Infinity, LayerMask.GetMask("Interactable"));
+        //Physics.Raycast(
+        //            Camera.main.transform.position,
+        //            Camera.main.transform.forward,
+        //            out hit,
+        //            maxDetectionRange,
+        //            LayerMask.GetMask("Interactable"));
         //if (hit.collider != null)
         //{
         //    Debug.Log(hit.collider.gameObject.transform.parent.name);
         //}
-
-        if (InputController.GetInteract()) {
-            if (!BookUIManager.Instance.showingBook) {
-
-                if (Physics.Raycast(
-                    Camera.main.transform.position, 
-                    Camera.main.transform.forward, 
-                    out hit, 
-                    maxDetectionRange, 
+        if (!transform.parent.TryGetComponent(out NPCObject parentNPC))
+        {
+            if (Physics.Raycast(
+                    Camera.main.transform.position,
+                    Camera.main.transform.forward,
+                    out hit,
+                    maxDetectionRange,
                     LayerMask.GetMask("Interactable"))
-
-                    && transform.parent.gameObject.GetComponentsInChildren<Collider>().Contains(hit.transform.gameObject.GetComponent<Collider>())) {
-                    
-                    BookUIManager.Instance.ShowSentenceGuesser(GetComponentInParent<NPCObject>());
+                && hit.transform.gameObject.GetComponent<Collider>() == GetComponent<Collider>())
+            {
+                if (!BookUIManager.Instance.showingBook && InputController.GetInteract())
+                {
+                    CheckBook(GetComponent<NPCObject>());
                 }
             }
+        }
+        else
+        {
+            if (Physics.Raycast(
+                    Camera.main.transform.position,
+                    Camera.main.transform.forward,
+                    out hit,
+                    maxDetectionRange,
+                    LayerMask.GetMask("Interactable"))
+                && transform.parent.gameObject.GetComponentsInChildren<Collider>().Contains(hit.transform.gameObject.GetComponent<Collider>()))
+            {
+                CheckBook(GetComponentInParent<NPCObject>());
+            }
+        }
+    }
 
-            else if (BookUIManager.Instance.showingBook) {
+    private void CheckBook(NPCObject npc)
+    {
+        if (InputController.GetInteract())
+        {
+            if (!BookUIManager.Instance.showingBook)
+            {
+                Debug.Log(name);
+                Debug.Log(transform.parent.name);
+                BookUIManager.Instance.ShowSentenceGuesser(npc);
+            }
+            else
+            {
+                Debug.Log(name);
+                Debug.Log(transform.parent.name);
                 BookUIManager.Instance.HideBook();
             }
         }
