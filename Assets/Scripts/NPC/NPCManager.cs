@@ -9,8 +9,8 @@ public class NPCManager : MonoBehaviour
     public static NPCManager Instance;
     public int minCorrectCount = 3;
     public List<NPCObject> unlockedNPCs;
-    // public HashSet<NPCObject> confirmedNPCs;
     public HashSet<NPCObject> correctGuessedNPCs;
+    public bool isPlayingAnimation;
 
     void Awake() {
         if (Instance != null) {
@@ -55,11 +55,11 @@ public class NPCManager : MonoBehaviour
     {
         if(correctGuessedNPCs.Count >= minCorrectCount) {
             foreach (NPCObject npc in correctGuessedNPCs) {
-                // confirmedNPCs.Add(npc);
                 npc.isConfirmed = true;
             }
 
             UnlockNewNPCs();
+
             correctGuessedNPCs.Clear();
         }
     }
