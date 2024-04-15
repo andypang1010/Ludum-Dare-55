@@ -2,29 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class InputController
+public class InputController : MonoBehaviour
 {
-    static KeyCode interactKey = KeyCode.E;
-    static KeyCode dialogueKey = KeyCode.Space;
-    static KeyCode inspectKey = KeyCode.Q;
+    public static InputController Instance { get; private set;}
+    public KeyCode interactKey = KeyCode.E;
+    public KeyCode dialogueKey = KeyCode.Space;
+    public KeyCode inspectKey = KeyCode.Q;
 
-    public static Vector2 GetWalkDirection() {
+    void Awake() {
+        if (Instance != null) {
+            Debug.LogWarning("More than one InputController in scene");
+        }
+        Instance = this;
+    }
+
+    public Vector2 GetWalkDirection() {
         return new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
     }
 
-    public static Vector2 GetLookDirection() {
+    public Vector2 GetLookDirection() {
         return new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
     }
 
-    public static bool GetInteract() {
+    public bool GetInteract() {
         return Input.GetKeyDown(interactKey);
     }
 
-    public static bool GetContinueDialogue() {
+    public bool GetContinueDialogue() {
         return Input.GetKeyDown(dialogueKey);
     }
 
-    public static bool GetInspect() {
+    public bool GetInspect() {
         return Input.GetKeyDown(inspectKey);
     }
 }

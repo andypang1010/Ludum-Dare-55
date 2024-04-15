@@ -48,7 +48,7 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        if (InputController.GetContinueDialogue() && currentStory.currentChoices.Count == 0) {
+        if (InputController.Instance.GetContinueDialogue() && currentStory.currentChoices.Count == 0) {
             ContinueStory();
         }
     }

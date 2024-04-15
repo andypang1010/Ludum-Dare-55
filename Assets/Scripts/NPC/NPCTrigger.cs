@@ -12,6 +12,8 @@ public class NPCTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.currentGameState != GameManager.GameStates.GAME) return;
+
         if (!transform.parent.TryGetComponent(out NPCObject parentNPC))
         {
             if (Physics.Raycast(
@@ -53,7 +55,7 @@ public class NPCTrigger : MonoBehaviour
 
     private void CheckBook(NPCObject npc)
     {
-        if (InputController.GetInteract())
+        if (InputController.Instance.GetInteract())
         {
             if (!BookUIManager.Instance.showingBook)
             {

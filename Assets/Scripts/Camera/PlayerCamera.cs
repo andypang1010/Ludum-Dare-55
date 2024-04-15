@@ -19,15 +19,18 @@ public class PlayerCamera : MonoBehaviour
     private bool playingAnimation;
     private Quaternion targetRotation;
 
-    void Start()
-    {
-        // Centers and hide cursor
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
-
     void Update()
     {
+        if (GameManager.Instance.currentGameState != GameManager.GameStates.GAME) {
+            // Update camera rotation
+            cam.rotation = Quaternion.Euler(rotationX, rotationY, 0);
+
+            // Update player rotation
+            transform.rotation = Quaternion.Euler(0, rotationY, 0);
+
+            return;
+        }
+
         if (BookUIManager.Instance.showingBook)
         {
             Cursor.lockState = CursorLockMode.None;
@@ -39,16 +42,18 @@ public class PlayerCamera : MonoBehaviour
             // Update player rotation
             transform.rotation = Quaternion.Euler(0, rotationY, 0);
         }
+
         else if (playingAnimation)
         {
             cam.transform.rotation = Quaternion.RotateTowards(cam.transform.rotation, targetRotation, turningRate * Time.deltaTime);
         }
+
         else
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
-            Vector2 lookDirection = InputController.GetLookDirection();
+            Vector2 lookDirection = InputController.Instance.GetLookDirection();
 
             // Get mouse input with sensitivity
             float mouseX = lookDirection.x * Time.fixedDeltaTime * sensX;

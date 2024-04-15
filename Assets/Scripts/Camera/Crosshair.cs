@@ -19,6 +19,7 @@ public class Crosshair : MonoBehaviour
 
     void Update()
     {
+        GetComponent<Image>().enabled = GameManager.Instance.currentGameState == GameManager.GameStates.GAME;
         if (Physics.Raycast(
                     Camera.main.transform.position,
                     Camera.main.transform.forward,
