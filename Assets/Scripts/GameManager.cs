@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public int frameRate = 60;
     public GameStates currentGameState;
     public GameObject canvas;
-    public GameObject menuPanel;
+    public GameObject menuPanel, rulesPanel;
     public GameObject bgm;
 
     void Awake() {
@@ -33,12 +33,17 @@ public class GameManager : MonoBehaviour
             case GameStates.MENU:
                 InputController.Instance.enabled = false;
                 menuPanel.SetActive(true);
+                rulesPanel.SetActive(false);
                 break;
             case GameStates.RULES:
+                InputController.Instance.enabled = false;
+                menuPanel.SetActive(false);
+                rulesPanel.SetActive(true);
                 break;
             case GameStates.GAME:
                 InputController.Instance.enabled = true;
                 menuPanel.SetActive(false);
+                rulesPanel.SetActive(false);
                 break;
         }
     }
@@ -47,12 +52,16 @@ public class GameManager : MonoBehaviour
         currentGameState = GameStates.GAME;
     }
 
-    public void ExitGame() {
-        Application.Quit();
+    public void StartMenu() {
+        currentGameState = GameStates.MENU;
     }
 
-    public void ShowRules() {
+    public void StartRules() {
         currentGameState = GameStates.RULES;
+    }
+
+    public void ExitGame() {
+        Application.Quit();
     }
 
     public enum GameStates {
