@@ -76,22 +76,22 @@ public class PlayerCamera : MonoBehaviour
         }
     }
 
-    public void PlayFollowAnimation(List<GameObject> gameObjects)
+    public void PlayFollowAnimation(List<NPCObject> npcs)
     {
-        StartCoroutine(FollowAnimation(gameObjects));
+        StartCoroutine(FollowAnimation(npcs));
     }
 
-    private IEnumerator FollowAnimation(List<GameObject> gameObjects)
+    private IEnumerator FollowAnimation(List<NPCObject> npcs)
     {
         playingAnimation = true;
         headBob.enabled = false;
-        foreach (GameObject obj in gameObjects)
+        foreach (NPCObject npc in npcs)
         {
-            StartCoroutine(LookAtPos(obj.transform.position));
+            StartCoroutine(LookAtPos(npc.transform.position));
             yield return new WaitForSeconds(lookDuration);
             audioSource.PlayOneShot(puff);
-            // TODO: play puff animation
-            yield return new WaitForSeconds(0.3f);
+            npc.PlayAnimated();
+            yield return new WaitForSeconds(1f);
         }
         playingAnimation = false;
         headBob.enabled = true;
