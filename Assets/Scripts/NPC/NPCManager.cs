@@ -26,8 +26,6 @@ public class NPCManager : MonoBehaviour
     void Start() {
         correctGuessedNPCs = new HashSet<NPCObject>();
         allNPCs = GameObject.FindGameObjectsWithTag("NPC");
-        
-        print("All NPCs length: " + allNPCs.Length);
     }
 
     public void GuessSentence(string sentence)

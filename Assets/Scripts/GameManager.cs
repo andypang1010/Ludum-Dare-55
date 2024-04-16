@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void StartMenu() {
-        currentGameState = GameStates.MENU;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void StartRules() {
