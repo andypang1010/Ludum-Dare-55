@@ -30,6 +30,12 @@ public class NPCManager : MonoBehaviour
         // unlockedNPCs = unlockedNPCs.OrderBy(x => UnityEngine.Random.Range(0, int.MaxValue)).ToList();
     }
 
+    void Update() {
+        if (unlockedNPCs.Count == 0) {
+            GameManager.Instance.currentGameState = GameManager.GameStates.WIN;
+        }
+    }
+
     public void GuessSentence(string sentence)
     {
         NPCObject openedNpc = BookUIManager.Instance.currNpc;
