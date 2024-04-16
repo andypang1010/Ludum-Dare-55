@@ -19,8 +19,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 992
     y: 12
-    width: 425
-    height: 1759
+    width: 424
+    height: 1751
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -711,7 +711,7 @@ MonoBehaviour:
   zTestMode: 0
   useAlphaClipping: 0
   generateMotionVector: 0
-  excludeFromTUAndAA: 0
+  excludeFromTAA: 0
   sortingPriority: 0
   m_SubOutputs: []
   colorMapping: 0
@@ -2574,7 +2574,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":0.0,"y":90.0,"z":90.0}'
+      m_SerializableObject: '{"x":0.0,"y":215.8000030517578,"z":90.0}'
     m_Space: 2147483647
   m_Property:
     name: Angle
