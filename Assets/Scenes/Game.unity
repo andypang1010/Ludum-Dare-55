@@ -1772,16 +1772,20 @@ PrefabInstance:
 
 
         Interact:
-        Press E when near an object to begin or stop  interacting with the object
+        Press E when near an object to begin or stop interacting with the object
 
 
-        Match
-        Sentences: Match the sentence in your notebook to its owner by interacting
-        with it and confirming your choice
+        Take
+        a break: Press ESC to pause/unpause the game
 
 
-        Progress: Correctly match 3
-        sentences with 3 objects to advance the game and unlock more of the story'
+        Match Sentences: Match
+        the sentence in your notebook to its owner by interacting with it and confirming
+        your choice
+
+
+        Progress: Correctly match 3 sentences with 3 objects
+        to advance the game and unlock more of the story'
       objectReference: {fileID: 0}
     - target: {fileID: 3262238071262370970, guid: f8d807e33aa73d148a3c3d2d4510390d,
         type: 3}
