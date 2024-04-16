@@ -28,7 +28,7 @@ public class PlayerCamera : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance.currentGameState != GameManager.GameStates.GAME) {
+        if (!GameManager.Instance.InputIsAvailable()) {
             // Update camera rotation
             cam.rotation = Quaternion.Euler(rotationX, rotationY, 0);
 
@@ -38,7 +38,8 @@ public class PlayerCamera : MonoBehaviour
             return;
         }
 
-        if (BookUIManager.Instance.showingBook)
+        if (BookUIManager.Instance.showingBook 
+        || GameManager.Instance.currentGameState == GameManager.GameStates.WIN)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;

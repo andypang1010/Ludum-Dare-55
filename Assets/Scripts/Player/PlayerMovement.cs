@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void GetInput() {
-        if (GameManager.Instance.currentGameState == GameManager.GameStates.GAME) {
+        if (GameManager.Instance.InputIsAvailable()) {
             Vector2 movement = InputController.Instance.GetWalkDirection();
             horizontalInput = movement.x;
             verticalInput = movement.y;

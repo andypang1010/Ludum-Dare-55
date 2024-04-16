@@ -79,6 +79,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public bool InputIsAvailable() {
+        return Instance.currentGameState == GameStates.GAME
+            || Instance.currentGameState == GameStates.WIN;
+    }
+
     public enum GameStates {
         MENU,
         RULES,

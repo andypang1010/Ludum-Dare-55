@@ -13,7 +13,7 @@ public class NPCTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.Instance.currentGameState != GameManager.GameStates.GAME) return;
+        if (!GameManager.Instance.InputIsAvailable()) return;
         
         if(openedBook && InputController.Instance.GetInteract())
         {

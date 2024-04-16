@@ -41037,6 +41037,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Win Panel
       objectReference: {fileID: 0}
+    - target: {fileID: 2073156544316184891, guid: 211f925755865f44fac62b02ceb01d1a,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.15686275
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
