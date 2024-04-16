@@ -662,17 +662,17 @@ Transform:
   m_Children:
   - {fileID: 4912288237864611603}
   - {fileID: 2555031096897961544}
-  - {fileID: 1827151295277980479}
-  - {fileID: 7767263336358875434}
-  - {fileID: 3579682285369385966}
-  - {fileID: 6198406139705126241}
+  - {fileID: 138708807653837505}
   - {fileID: 819763145832645144}
+  - {fileID: 7767263336358875434}
+  - {fileID: 1827151295277980479}
+  - {fileID: 3724246419994338561}
   - {fileID: 1155753173083949924}
+  - {fileID: 1321680849714922860}
+  - {fileID: 6198406139705126241}
+  - {fileID: 3579682285369385966}
   - {fileID: 456048994}
   - {fileID: 1079634423008924883}
-  - {fileID: 3724246419994338561}
-  - {fileID: 1321680849714922860}
-  - {fileID: 138708807653837505}
   m_Father: {fileID: 2866497350091987948}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &67352334 stripped
@@ -5053,7 +5053,7 @@ MonoBehaviour:
   sentence: I want to see my cousin Key!
   currentGuess: 
   bookView: {fileID: 21300000, guid: 5fe0c4fe25e97464face8fcda4461690, type: 3}
-  nextUnlockedNPC: {fileID: 0}
+  nextUnlockedNPC: {fileID: 2869537238328200424}
   isConfirmed: 0
   original: {fileID: 1675328814}
   animated: {fileID: 605376181}
@@ -6294,7 +6294,7 @@ MonoBehaviour:
   sentence: Just because we share the same last name doesn't mean we're related
   currentGuess: 
   bookView: {fileID: 21300000, guid: aa625032edc43ba4c9fc36862f8e8f79, type: 3}
-  nextUnlockedNPC: {fileID: 0}
+  nextUnlockedNPC: {fileID: 8567400238018059249}
   isConfirmed: 0
   original: {fileID: 1206659533}
   animated: {fileID: 1966182914}
@@ -19296,12 +19296,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minCorrectCount: 3
   unlockedNPCs:
-  - {fileID: 6252034680167559708}
-  - {fileID: 6965637952908829936}
-  - {fileID: 8567400238018059249}
-  - {fileID: 2869537238328200424}
   - {fileID: 7560838298716081974}
-  - {fileID: 608420438}
+  - {fileID: 5030930728703443565}
+  - {fileID: 3801544310098110012}
+  - {fileID: 1531755312075097818}
+  - {fileID: 489321859}
   isPlayingAnimation: 0
 --- !u!114 &1779561153
 MonoBehaviour:
@@ -30049,7 +30048,7 @@ MonoBehaviour:
   sentence: Glad I'm not Scout
   currentGuess: 
   bookView: {fileID: 21300000, guid: 97a0a4c4a87ce8d458c003b01d5aad55, type: 3}
-  nextUnlockedNPC: {fileID: 0}
+  nextUnlockedNPC: {fileID: 6965637952908829936}
   isConfirmed: 0
   original: {fileID: 980866305}
   animated: {fileID: 1863673163}
@@ -35516,7 +35515,7 @@ MonoBehaviour:
   sentence: One day, I will take over the world!
   currentGuess: 
   bookView: {fileID: 21300000, guid: bb0d9dfe918eb3847944cd38de4d6b91, type: 3}
-  nextUnlockedNPC: {fileID: 0}
+  nextUnlockedNPC: {fileID: 6252034680167559708}
   isConfirmed: 0
   original: {fileID: 2007707030}
   animated: {fileID: 1691721687}
@@ -39519,7 +39518,7 @@ MonoBehaviour:
   sentence: Welcome to the bottom, Scout
   currentGuess: 
   bookView: {fileID: 21300000, guid: f3ebfa796596195458458e920383392f, type: 3}
-  nextUnlockedNPC: {fileID: 0}
+  nextUnlockedNPC: {fileID: 456048995}
   isConfirmed: 0
   original: {fileID: 0}
   animated: {fileID: 0}
@@ -40057,7 +40056,7 @@ MonoBehaviour:
   sentence: I swear I'm not a control-freak
   currentGuess: 
   bookView: {fileID: 21300000, guid: 2a6111d0f38f56243a90bdeeec632403, type: 3}
-  nextUnlockedNPC: {fileID: 0}
+  nextUnlockedNPC: {fileID: 608420438}
   isConfirmed: 0
   original: {fileID: 1165020925}
   animated: {fileID: 197518686}
@@ -45387,10 +45386,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b0e20e1f02bc294787b8d63f79e72b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sentence: Good morning Mira! You look shiny as always!
+  sentence: "I can\u2019t do much during the morning\u2026"
   currentGuess: 
   bookView: {fileID: 21300000, guid: b02e0c0673fdfeb4db280d072151722c, type: 3}
-  nextUnlockedNPC: {fileID: 0}
+  nextUnlockedNPC: {fileID: 8046183221369032132}
   isConfirmed: 0
   original: {fileID: 312520238}
   animated: {fileID: 290826432}
@@ -51130,7 +51129,7 @@ MonoBehaviour:
   sentence: My head through your body?
   currentGuess: 
   bookView: {fileID: 21300000, guid: e5124e40d8eb53849806fd9ca39eb800, type: 3}
-  nextUnlockedNPC: {fileID: 489321859}
+  nextUnlockedNPC: {fileID: 0}
   isConfirmed: 0
   original: {fileID: 189992877}
   animated: {fileID: 1363356351}
@@ -53767,7 +53766,7 @@ MonoBehaviour:
   sentence: "I don\u2019t even need a clock, timer is all I need  "
   currentGuess: 
   bookView: {fileID: 21300000, guid: 74b3e69f63c5f4542aa4d85f0c03470b, type: 3}
-  nextUnlockedNPC: {fileID: 1531755312075097818}
+  nextUnlockedNPC: {fileID: 0}
   isConfirmed: 0
   original: {fileID: 275481288}
   animated: {fileID: 155560508}
@@ -56781,10 +56780,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b0e20e1f02bc294787b8d63f79e72b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sentence: You look fancy yourshelf!
+  sentence: An avid reader immerses themshelves in literature at every opportunity.
   currentGuess: 
   bookView: {fileID: 21300000, guid: 6ec31c2c6ffd72f45ae09075fa98096a, type: 3}
-  nextUnlockedNPC: {fileID: 5030930728703443565}
+  nextUnlockedNPC: {fileID: 3724246419994338562}
   isConfirmed: 0
   original: {fileID: 0}
   animated: {fileID: 1723477757}
@@ -61887,7 +61886,7 @@ MonoBehaviour:
   sentence: Wish I could see myself
   currentGuess: 
   bookView: {fileID: 21300000, guid: 53afd3d8585e4ff43bd2b16875aaae89, type: 3}
-  nextUnlockedNPC: {fileID: 3724246419994338562}
+  nextUnlockedNPC: {fileID: 0}
   isConfirmed: 0
   original: {fileID: 2012902564}
   animated: {fileID: 1357371671}
