@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: Catto Games
   productName: Brought to Life
-  defaultCursor: {fileID: 0}
+  defaultCursor: {fileID: 2800000, guid: 7e6c40e0e4e6eb848a3845bef36aed42, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.98823535, g: 0.3019608, b: 0, a: 1}
   m_ShowUnitySplashScreen: 1
