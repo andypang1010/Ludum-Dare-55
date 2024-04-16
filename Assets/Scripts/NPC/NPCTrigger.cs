@@ -45,7 +45,7 @@ public class NPCTrigger : MonoBehaviour
 
     private void CheckBook(NPCObject npc)
     {
-        if (InputController.Instance.GetInteract())
+        if (InputController.Instance.GetInteract() && NPCManager.Instance.unlockedNPCs.Contains(npc))
         {
             if (!BookUIManager.Instance.showingBook)
             {

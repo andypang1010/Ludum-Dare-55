@@ -26,10 +26,8 @@ public class NPCManager : MonoBehaviour
         // confirmedNPCs = new HashSet<NPCObject>();
         correctGuessedNPCs = new HashSet<NPCObject>();
 
-        // UnityEngine.Random random = new UnityEngine.Random();
-        System.Random random = new System.Random();
-        random.Next();
-        unlockedNPCs = unlockedNPCs.OrderBy(x => UnityEngine.Random.Range(0, int.MaxValue)).ToList();
+        // Randomize sentences
+        // unlockedNPCs = unlockedNPCs.OrderBy(x => UnityEngine.Random.Range(0, int.MaxValue)).ToList();
     }
 
     public void GuessSentence(string sentence)
@@ -82,7 +80,7 @@ public class NPCManager : MonoBehaviour
             if (npc.nextUnlockedNPC != null)
             {
                 unlockedNPCs.Add(npc.nextUnlockedNPC);
-                newUnlocked.Add(npc);
+                newUnlocked.Add(npc.nextUnlockedNPC);
             }
         }
         BookUIManager.Instance.UnlockNewNPCs(new List<NPCObject>(correctGuessedNPCs), newUnlocked);
