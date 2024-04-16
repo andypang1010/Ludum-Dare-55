@@ -37,44 +37,6 @@ public class GameManager : MonoBehaviour
         pausePanel.SetActive(currentGameState == GameStates.PAUSE);
         gamePanel.SetActive(currentGameState == GameStates.GAME);
         winPanel.SetActive(currentGameState == GameStates.WIN);
-
-        // switch (currentGameState) {
-        //     case GameStates.MENU:
-        //         menuPanel.SetActive(true);
-        //         rulesPanel.SetActive(false);
-        //         pausePanel.SetActive(false);
-        //         gamePanel.SetActive(false);
-        //         winPanel.SetActive(false);
-        //         break;
-        //     case GameStates.RULES:
-        //         menuPanel.SetActive(false);
-        //         rulesPanel.SetActive(true);
-        //         pausePanel.SetActive(false);
-        //         gamePanel.SetActive(false);
-        //         winPanel.SetActive(false);
-        //         break;
-        //     case GameStates.PAUSE:
-        //         menuPanel.SetActive(false);
-        //         rulesPanel.SetActive(false);
-        //         pausePanel.SetActive(true);
-        //         gamePanel.SetActive(false);
-        //         winPanel.SetActive(false);
-        //         break;
-        //     case GameStates.GAME:
-        //         menuPanel.SetActive(false);
-        //         rulesPanel.SetActive(false);
-        //         pausePanel.SetActive(false);
-        //         gamePanel.SetActive(true);
-        //         winPanel.SetActive(false);
-        //         break;
-        //     case GameStates.WIN:
-        //         menuPanel.SetActive(false);
-        //         rulesPanel.SetActive(false);
-        //         pausePanel.SetActive(false);
-        //         gamePanel.SetActive(false);
-        //         winPanel.SetActive(true);
-        //         break;
-        // }
     }
 
     public void StartMenu() {
