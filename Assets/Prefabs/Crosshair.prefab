@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.6286313, b: 0.37331533, a: 0.54509807}
+  m_Color: {r: 0.6132076, g: 0.24911562, b: 0, a: 0.8862745}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d272aa964b305c148994d17135515dc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDetectionRange: 10
+  maxDetectionRange: 4
   defaultCrosshair: {fileID: -25533319, guid: c70765854a5fe874b975c8dd45c899c1, type: 3}
   interacteCrosshair: {fileID: 851768063, guid: c70765854a5fe874b975c8dd45c899c1,
     type: 3}
