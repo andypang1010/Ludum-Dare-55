@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -113,9 +114,15 @@ public class BookUIManager : MonoBehaviour
     {
         playCamAnimation = true;
 
+        List<string> justGuessedSentences = new List<string>();
+        foreach(NPCObject npc in justGuessed)
+        {
+            justGuessedSentences.Add(npc.sentence);
+        }
+
         foreach(Sentence sentence in currSentences)
         {
-            if(!sentence.npcObject.isConfirmed)
+            if(!justGuessedSentences.Contains(sentence.sentence))
             {
                 continue;
             }

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Sentence : MonoBehaviour
 {
     public NPCObject npcObject { get; private set; }
-    private string sentence;
+    public string sentence { get; private set; }
     private Button buttonComponent;
     private TMP_Text tmpTextComponent;
 
