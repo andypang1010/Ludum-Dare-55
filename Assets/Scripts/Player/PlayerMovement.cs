@@ -42,7 +42,9 @@ public class PlayerMovement : MonoBehaviour
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f);
         exitingSlope = !grounded;
 
-        if (!BookUIManager.Instance.showingBook) {
+        if (!BookUIManager.Instance.showingBook
+            && GameManager.Instance.InputIsAvailable()) {
+
             GetInput();
             SpeedControl();
             SetDrag();
@@ -51,17 +53,17 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void FixedUpdate() {
-        if (!BookUIManager.Instance.showingBook) {
+        if (!BookUIManager.Instance.showingBook 
+            && GameManager.Instance.InputIsAvailable()) {
+
             Move();
         }
     }
 
     void GetInput() {
-        if (GameManager.Instance.InputIsAvailable()) {
-            Vector2 movement = InputController.Instance.GetWalkDirection();
-            horizontalInput = movement.x;
-            verticalInput = movement.y;
-        }
+        Vector2 movement = InputController.Instance.GetWalkDirection();
+        horizontalInput = movement.x;
+        verticalInput = movement.y;
     }
 
     void HandleMovementState() {

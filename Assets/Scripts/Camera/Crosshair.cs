@@ -8,6 +8,7 @@ public class Crosshair : MonoBehaviour
     public static Crosshair Instance;
     public float maxDetectionRange = 4f;
     public Sprite defaultCrosshair, interacteCrosshair;
+    public PlayerCamera playerCamera;
     
     void Awake() {
         if (Instance != null) {
@@ -19,7 +20,7 @@ public class Crosshair : MonoBehaviour
 
     void Update()
     {
-        GetComponent<Image>().enabled = GameManager.Instance.currentGameState == GameManager.GameStates.GAME;
+        GetComponent<Image>().enabled = (GameManager.Instance.currentGameState == GameManager.GameStates.GAME) && !playerCamera.playingAnimation;
         if (Physics.Raycast(
                     Camera.main.transform.position,
                     Camera.main.transform.forward,

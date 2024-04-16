@@ -13,6 +13,7 @@ public class NPCManager : MonoBehaviour
     public List<NPCObject> unlockedNPCs;
     public HashSet<NPCObject> correctGuessedNPCs;
     public bool isPlayingAnimation;
+    public GameObject[] allNPCs;
 
     void Awake() {
         if (Instance != null) {
@@ -23,17 +24,10 @@ public class NPCManager : MonoBehaviour
     }
 
     void Start() {
-        // confirmedNPCs = new HashSet<NPCObject>();
         correctGuessedNPCs = new HashSet<NPCObject>();
-
-        // Randomize sentences
-        // unlockedNPCs = unlockedNPCs.OrderBy(x => UnityEngine.Random.Range(0, int.MaxValue)).ToList();
-    }
-
-    void Update() {
-        if (unlockedNPCs.Count == 0) {
-            GameManager.Instance.currentGameState = GameManager.GameStates.WIN;
-        }
+        allNPCs = GameObject.FindGameObjectsWithTag("NPC");
+        
+        print("All NPCs length: " + allNPCs.Length);
     }
 
     public void GuessSentence(string sentence)

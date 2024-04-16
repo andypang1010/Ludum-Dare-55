@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -37,6 +39,17 @@ public class GameManager : MonoBehaviour
         pausePanel.SetActive(currentGameState == GameStates.PAUSE);
         gamePanel.SetActive(currentGameState == GameStates.GAME);
         winPanel.SetActive(currentGameState == GameStates.WIN);
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            switch (currentGameState) {
+                case GameStates.GAME:
+                    StartPause();
+                    break;
+                case GameStates.PAUSE:
+                    StartGame();
+                    break;
+            }
+        }
     }
 
     public void StartMenu() {
@@ -64,8 +77,7 @@ public class GameManager : MonoBehaviour
     }
 
     public bool InputIsAvailable() {
-        return Instance.currentGameState == GameStates.GAME
-            || Instance.currentGameState == GameStates.WIN;
+        return Instance.currentGameState == GameStates.GAME;
     }
 
     public enum GameStates {

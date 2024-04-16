@@ -134,10 +134,6 @@ public class BookUIManager : MonoBehaviour
         // TODO: test unlock new
         foreach(NPCObject npc in newUnlocked)
         {
-
-            // TODO: play confirmed sound (ARE YOU SURE???)
-
-            // audioSource.PlayOneShot(confirmedNPC);
             CreateNewSentence(npc);
             yield return new WaitForSeconds(0.5f);
         }

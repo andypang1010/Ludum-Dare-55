@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
@@ -19,7 +20,7 @@ public class PlayerCamera : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip puff;
 
-    private bool playingAnimation;
+    public bool playingAnimation;
 
     void Start() {
         rotationX = initialRotationX;
@@ -28,7 +29,11 @@ public class PlayerCamera : MonoBehaviour
 
     void Update()
     {
-        if (!GameManager.Instance.InputIsAvailable()) {
+        if (!GameManager.Instance.InputIsAvailable()
+        || BookUIManager.Instance.showingBook) {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
             // Update camera rotation
             cam.rotation = Quaternion.Euler(rotationX, rotationY, 0);
 
@@ -38,42 +43,32 @@ public class PlayerCamera : MonoBehaviour
             return;
         }
 
-        if (BookUIManager.Instance.showingBook 
-        || GameManager.Instance.currentGameState == GameManager.GameStates.WIN)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+        else {
 
-            // Update camera rotation
-            cam.rotation = Quaternion.Euler(rotationX, rotationY, 0);
-
-            // Update player rotation
-            transform.rotation = Quaternion.Euler(0, rotationY, 0);
-        }
-
-        else if (!playingAnimation)
-        {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
-            Vector2 lookDirection = InputController.Instance.GetLookDirection();
+            if (!playingAnimation) {
+                Vector2 lookDirection = InputController.Instance.GetLookDirection();
 
-            // Get mouse input with sensitivity
-            float mouseX = lookDirection.x * Time.fixedDeltaTime * sensX;
-            float mouseY = lookDirection.y * Time.fixedDeltaTime * sensY;
+                // Get mouse input with sensitivity
+                float mouseX = lookDirection.x * Time.fixedDeltaTime * sensX;
+                float mouseY = lookDirection.y * Time.fixedDeltaTime * sensY;
 
-            // Weird but works (DON'T TOUCH)
-            rotationY += mouseX;
-            rotationX -= mouseY;
+                // Weird but works (DON'T TOUCH)
+                rotationY += mouseX;
+                rotationX -= mouseY;
 
-            // Clamp y-axis rotation
-            rotationX = Math.Clamp(rotationX, -80f, 80f);
+                // Clamp y-axis rotation
+                rotationX = Math.Clamp(rotationX, -80f, 80f);
 
-            // Update camera rotation
-            cam.rotation = Quaternion.Euler(rotationX, rotationY, 0);
+                // Update camera rotation
+                cam.rotation = Quaternion.Euler(rotationX, rotationY, 0);
 
-            // Update player rotation
-            transform.rotation = Quaternion.Euler(0, rotationY, 0);
+                // Update player rotation
+                transform.rotation = Quaternion.Euler(0, rotationY, 0);
+            }
+
         }
     }
 
@@ -94,8 +89,13 @@ public class PlayerCamera : MonoBehaviour
             npc.PlayAnimated();
             yield return new WaitForSeconds(1f);
         }
+        
         playingAnimation = false;
         headBob.enabled = true;
+
+        if (NPCManager.Instance.allNPCs.All(x => x.GetComponent<NPCObject>().isConfirmed == true)) {
+            GameManager.Instance.currentGameState = GameManager.GameStates.WIN;
+        }
     }
 
     private IEnumerator LookAtPos(Vector3 pos)
