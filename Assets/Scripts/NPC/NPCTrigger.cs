@@ -8,12 +8,20 @@ using UnityEngine.UI;
 public class NPCTrigger : MonoBehaviour
 {
     RaycastHit hit;
+    bool openedBook;
 
     // Update is called once per frame
     void Update()
     {
         if (GameManager.Instance.currentGameState != GameManager.GameStates.GAME) return;
         
+        if(openedBook && InputController.Instance.GetInteract())
+        {
+            BookUIManager.Instance.HideBook();
+            openedBook = false;
+            return;
+        }
+
         if (!transform.parent.TryGetComponent(out NPCObject _))
         {
             if (Physics.Raycast(
@@ -50,10 +58,7 @@ public class NPCTrigger : MonoBehaviour
             if (!BookUIManager.Instance.showingBook)
             {
                 BookUIManager.Instance.ShowSentenceGuesser(npc);
-            }
-            else
-            {
-                BookUIManager.Instance.HideBook();
+                openedBook = true;
             }
         }
     }
