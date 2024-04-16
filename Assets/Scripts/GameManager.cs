@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public int frameRate = 60;
     public GameStates currentGameState;
     public GameObject canvas;
-    public GameObject menuPanel, rulesPanel, winPanel;
+    public GameObject menuPanel, rulesPanel, pausePanel, gamePanel, winPanel;
     public GameObject bgm;
 
     void Awake() {
@@ -28,39 +28,53 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         Application.targetFrameRate = frameRate;
-        bgm.SetActive(currentGameState == GameStates.GAME
+        bgm.SetActive(currentGameState == GameStates.PAUSE
+                    || currentGameState == GameStates.GAME
                     || currentGameState == GameStates.WIN);
 
-        switch (currentGameState) {
-            case GameStates.MENU:
-                InputController.Instance.enabled = false;
-                menuPanel.SetActive(true);
-                rulesPanel.SetActive(false);
-                winPanel.SetActive(false);
-                break;
-            case GameStates.RULES:
-                InputController.Instance.enabled = false;
-                menuPanel.SetActive(false);
-                rulesPanel.SetActive(true);
-                winPanel.SetActive(false);
-                break;
-            case GameStates.GAME:
-                InputController.Instance.enabled = true;
-                menuPanel.SetActive(false);
-                rulesPanel.SetActive(false);
-                winPanel.SetActive(false);
-                break;
-            case GameStates.WIN:
-                InputController.Instance.enabled = true;
-                menuPanel.SetActive(false);
-                rulesPanel.SetActive(false);
-                winPanel.SetActive(true);
-                break;
-        }
-    }
+        menuPanel.SetActive(currentGameState == GameStates.MENU);
+        rulesPanel.SetActive(currentGameState == GameStates.RULES);
+        pausePanel.SetActive(currentGameState == GameStates.PAUSE);
+        gamePanel.SetActive(currentGameState == GameStates.GAME);
+        winPanel.SetActive(currentGameState == GameStates.WIN);
 
-    public void StartGame() {
-        currentGameState = GameStates.GAME;
+        // switch (currentGameState) {
+        //     case GameStates.MENU:
+        //         menuPanel.SetActive(true);
+        //         rulesPanel.SetActive(false);
+        //         pausePanel.SetActive(false);
+        //         gamePanel.SetActive(false);
+        //         winPanel.SetActive(false);
+        //         break;
+        //     case GameStates.RULES:
+        //         menuPanel.SetActive(false);
+        //         rulesPanel.SetActive(true);
+        //         pausePanel.SetActive(false);
+        //         gamePanel.SetActive(false);
+        //         winPanel.SetActive(false);
+        //         break;
+        //     case GameStates.PAUSE:
+        //         menuPanel.SetActive(false);
+        //         rulesPanel.SetActive(false);
+        //         pausePanel.SetActive(true);
+        //         gamePanel.SetActive(false);
+        //         winPanel.SetActive(false);
+        //         break;
+        //     case GameStates.GAME:
+        //         menuPanel.SetActive(false);
+        //         rulesPanel.SetActive(false);
+        //         pausePanel.SetActive(false);
+        //         gamePanel.SetActive(true);
+        //         winPanel.SetActive(false);
+        //         break;
+        //     case GameStates.WIN:
+        //         menuPanel.SetActive(false);
+        //         rulesPanel.SetActive(false);
+        //         pausePanel.SetActive(false);
+        //         gamePanel.SetActive(false);
+        //         winPanel.SetActive(true);
+        //         break;
+        // }
     }
 
     public void StartMenu() {
@@ -69,6 +83,14 @@ public class GameManager : MonoBehaviour
 
     public void StartRules() {
         currentGameState = GameStates.RULES;
+    }
+
+    public void StartPause() {
+        currentGameState = GameStates.PAUSE;
+    }
+
+    public void StartGame() {
+        currentGameState = GameStates.GAME;
     }
 
     public void ExitGame() {
@@ -87,6 +109,7 @@ public class GameManager : MonoBehaviour
     public enum GameStates {
         MENU,
         RULES,
+        PAUSE,
         GAME,
         WIN
     }
