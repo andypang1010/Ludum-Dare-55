@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class GameManager : MonoBehaviour
     public int frameRate = 60;
     public GameStates currentGameState;
     public GameObject canvas;
-    public GameObject menuPanel, rulesPanel;
+    public GameObject menuPanel, rulesPanel, winPanel;
     public GameObject bgm;
 
     void Awake() {
@@ -27,23 +28,33 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         Application.targetFrameRate = frameRate;
-        bgm.SetActive(currentGameState == GameStates.GAME);
+        bgm.SetActive(currentGameState == GameStates.GAME
+                    || currentGameState == GameStates.WIN);
 
         switch (currentGameState) {
             case GameStates.MENU:
                 InputController.Instance.enabled = false;
                 menuPanel.SetActive(true);
                 rulesPanel.SetActive(false);
+                winPanel.SetActive(false);
                 break;
             case GameStates.RULES:
                 InputController.Instance.enabled = false;
                 menuPanel.SetActive(false);
                 rulesPanel.SetActive(true);
+                winPanel.SetActive(false);
                 break;
             case GameStates.GAME:
                 InputController.Instance.enabled = true;
                 menuPanel.SetActive(false);
                 rulesPanel.SetActive(false);
+                winPanel.SetActive(false);
+                break;
+            case GameStates.WIN:
+                InputController.Instance.enabled = true;
+                menuPanel.SetActive(false);
+                rulesPanel.SetActive(false);
+                winPanel.SetActive(true);
                 break;
         }
     }
@@ -64,9 +75,14 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void RestartGame() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public enum GameStates {
         MENU,
         RULES,
-        GAME
+        GAME,
+        WIN
     }
 }
