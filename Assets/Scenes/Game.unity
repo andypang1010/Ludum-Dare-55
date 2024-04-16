@@ -61259,6 +61259,44 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1907974413}
     m_Modifications:
+    - target: {fileID: 1838531105429181703, guid: 2953c313a3e3e97478e060f4f1999d88,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2b5ae86384a3ece4ebca0d0ea7d20775,
+        type: 3}
+    - target: {fileID: 1838531105429181703, guid: 2953c313a3e3e97478e060f4f1999d88,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.8156863
+      objectReference: {fileID: 0}
+    - target: {fileID: 1838531105429181703, guid: 2953c313a3e3e97478e060f4f1999d88,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1838531105429181703, guid: 2953c313a3e3e97478e060f4f1999d88,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1838531105429181703, guid: 2953c313a3e3e97478e060f4f1999d88,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167810311404090631, guid: 2953c313a3e3e97478e060f4f1999d88,
+        type: 3}
+      propertyPath: defaultCrosshair
+      value: 
+      objectReference: {fileID: 21300000, guid: 2b5ae86384a3ece4ebca0d0ea7d20775,
+        type: 3}
+    - target: {fileID: 6167810311404090631, guid: 2953c313a3e3e97478e060f4f1999d88,
+        type: 3}
+      propertyPath: interacteCrosshair
+      value: 
+      objectReference: {fileID: 21300000, guid: fc57de5e46cdf224ba62821cf7797c58,
+        type: 3}
     - target: {fileID: 8010381286896487421, guid: 2953c313a3e3e97478e060f4f1999d88,
         type: 3}
       propertyPath: m_Name
