@@ -61,7 +61,16 @@ public class NPCManager : MonoBehaviour
 
     private void CheckNewUnlock()
     {
-        if(correctGuessedNPCs.Count >= minCorrectCount) {
+        int notConfirmed = 0;
+        foreach(NPCObject npc in unlockedNPCs)
+        {
+            if(!npc.isConfirmed)
+            {
+                notConfirmed++;
+            }
+        }
+
+        if(correctGuessedNPCs.Count >= minCorrectCount || (unlockedNPCs.Count == 13 && correctGuessedNPCs.Count == 1 && notConfirmed == 1)) {
             foreach (NPCObject npc in correctGuessedNPCs) {
                 npc.isConfirmed = true;
             }
