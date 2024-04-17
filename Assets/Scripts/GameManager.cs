@@ -53,7 +53,12 @@ public class GameManager : MonoBehaviour
     }
 
     public void StartMenu() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (currentGameState == GameStates.RULES) {
+            currentGameState = GameStates.MENU;
+        }
+        else {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     public void StartRules() {
@@ -74,6 +79,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        currentGameState = GameStates.GAME;
     }
 
     public bool InputIsAvailable() {
