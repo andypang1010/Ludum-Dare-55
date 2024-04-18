@@ -11,9 +11,12 @@ public class NPCManager : MonoBehaviour
     public static NPCManager Instance;
     public int minCorrectCount = 3;
     public List<NPCObject> unlockedNPCs;
+    public List<NPCObject> lockedNPC = new List<NPCObject>();
     public HashSet<NPCObject> correctGuessedNPCs;
     public bool isPlayingAnimation;
     public GameObject[] allNPCs;
+
+    private Queue<NPCObject> lockedNPCQueue = new Queue<NPCObject>();
 
     void Awake() {
         if (Instance != null) {
@@ -26,6 +29,10 @@ public class NPCManager : MonoBehaviour
     void Start() {
         correctGuessedNPCs = new HashSet<NPCObject>();
         allNPCs = GameObject.FindGameObjectsWithTag("NPC");
+        foreach(NPCObject npc in lockedNPC)
+        {
+            lockedNPCQueue.Enqueue(npc);
+        }
     }
 
     public void GuessSentence(string sentence)
@@ -68,7 +75,7 @@ public class NPCManager : MonoBehaviour
             }
         }
 
-        if(correctGuessedNPCs.Count >= minCorrectCount || (unlockedNPCs.Count == 13 && correctGuessedNPCs.Count == 1 && notConfirmed == 1)) {
+        if(correctGuessedNPCs.Count >= minCorrectCount || (notConfirmed < minCorrectCount && correctGuessedNPCs.Count == notConfirmed)) {
             foreach (NPCObject npc in correctGuessedNPCs) {
                 npc.isConfirmed = true;
             }
@@ -82,12 +89,13 @@ public class NPCManager : MonoBehaviour
     public void UnlockNewNPCs()
     {
         List<NPCObject> newUnlocked = new List<NPCObject>();
-        foreach(NPCObject npc in correctGuessedNPCs)
+        for(int i = 0; i < minCorrectCount; i++)
         {
-            if (npc.nextUnlockedNPC != null)
+            if (lockedNPCQueue.Count > 0)
             {
-                unlockedNPCs.Add(npc.nextUnlockedNPC);
-                newUnlocked.Add(npc.nextUnlockedNPC);
+                NPCObject unlocked = lockedNPCQueue.Dequeue();
+                newUnlocked.Add(unlocked);
+                unlockedNPCs.Add(unlocked);
             }
         }
         BookUIManager.Instance.UnlockNewNPCs(new List<NPCObject>(correctGuessedNPCs), newUnlocked);
